@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "site": "Jezero Crater \u00b7 Perseverance landing region",
+  "body": "Mars",
+  "width_m": 512,
+  "depth_m": 512,
+  "cols": 513,
+  "rows": 513,
+  "spacing_m": 1,
+  "height_file": "height_detail.f32",
+  "image_file": "ortho.webp",
+  "slope_file": "slope_detail.webp",
+  "height_format": "little-endian float32, absolute metres; row 0 is north",
+  "height_min_m": -2571.6748046875,
+  "height_max_m": -2563.961181640625,
+  "height_base_m": -2569.83349609375,
+  "origin_projected_m": [
+    4590872.5,
+    1093304.5
+  ],
+  "projected_bounds_m": [
+    4590616.5,
+    1093048.5,
+    4591128.5,
+    1093560.5
+  ],
+  "center_lon_deg": 77.45079590148755,
+  "center_lat_deg": 18.44470820909923,
+  "mars_radius_m": 3396190.0,
+  "projection": "Equirectangular; standard parallel 0, central meridian 0",
+  "coordinates": "planetocentric latitude; east-positive longitude",
+  "world": "X east; Y elevation relative to height_base_m; Z south. metres.",
+  "dem": {
+    "url": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/mars2020_trn/HiRISE/JEZ_hirise_soc_006_DTM_MOLAtopography_DeltaGeoid_1m_Eqc_latTs0_lon0_blend40.tif",
+    "crs_wkt": "PROJCS[\"Equirectangular Mars 2000 Sphere IAU\",GEOGCS[\"D_Mars_2000_Sphere\",DATUM[\"Mars_2000_(Sphere)\",SPHEROID[\"Mars_2000_Sphere_IAU\",3396190,0],AUTHORITY[\"ESRI\",\"106971\"]],PRIMEM[\"Reference_Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Equirectangular\"],PARAMETER[\"standard_parallel_1\",0],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      21488,
+      21400
+    ],
+    "window": [
+      13250,
+      13057,
+      513,
+      513
+    ],
+    "source_pixel_m": 1,
+    "sampling": "every original pixel centre; no smoothing or height exaggeration",
+    "nodata": -3.4028226550889045e+38,
+    "no_data_in_crop": false
+  },
+  "optical": {
+    "url": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/mars2020_trn/HiRISE/JEZ_hirise_soc_006_orthoMosaic_25cm_Eqc_latTs0_lon0_first.tif",
+    "shape": [
+      85952,
+      85600
+    ],
+    "crs_wkt": "PROJCS[\"Equirectangular Mars 2000 Sphere IAU\",GEOGCS[\"D_Mars_2000_Sphere\",DATUM[\"Mars_2000_(Sphere)\",SPHEROID[\"Mars_2000_Sphere_IAU\",3396190,0],AUTHORITY[\"ESRI\",\"106971\"]],PRIMEM[\"Reference_Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Equirectangular\"],PARAMETER[\"standard_parallel_1\",0],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+    "source_pixel_m": 0.25,
+    "window": [
+      53002.0,
+      52230.0,
+      2048.0,
+      2048.0
+    ],
+    "output_pixels": [
+      2048,
+      2048
+    ],
+    "display": "single-band grayscale; warm terrain material is illustrative, not true colour"
+  },
+  "contrast_stretch": [
+    59.0,
+    158.0
+  ],
+  "sources": [
+    "https://astrogeology.usgs.gov/search/map/Mars/Mars2020/JEZ_hirise_soc_006_DTM_MOLAtopography_DeltaGeoid_1m_Eqc_latTs0_lon0_blend40",
+    "https://astrogeology.usgs.gov/search/map/Mars/Mars2020/JEZ_hirise_soc_006_orthoMosaic_25cm_Eqc_latTs0_lon0_first"
+  ],
+  "credit": "NASA/JPL/University of Arizona/USGS \u00b7 Mars 2020 Terrain Relative Navigation products",
+  "limitations": [
+    "1 m source grid; no measured sub-metre rocks, grains, wheel slip or soil response",
+    "Optical image is single-band; ground tint, micro-normal shading, sky and lighting are illustrative",
+    "Orbital intensity is not height or calibrated albedo; imagery contains original illumination",
+    "DEMs and optics have finite registration/elevation uncertainty; not an EVA safety product"
+  ],
+  "files": {
+    "height_detail.f32": {
+      "bytes": 1052676,
+      "sha256": "6b9f120d37d40fa92600e5f8ff04dbd57d65ec3a62d0850fc4b53eedc3eb2d86"
+    },
+    "ortho.webp": {
+      "bytes": 757630,
+      "sha256": "a7eee0150654c9c05c054b1044d1a51827f91986643a056e744f2cc0bdfbc350"
+    },
+    "slope_detail.webp": {
+      "bytes": 70186,
+      "sha256": "22c848086ec4c48495a95c37f252a876cc7ed8cdf8ead5af3b062a229e9ae3d5"
+    }
+  },
+  "visualization": {
+    "height_exaggeration": 1,
+    "micro_normal": "seeded illustrative shading only; does not modify geometry",
+    "optical_display": "contrast-compressed monochrome for material shading; original image retained in map"
+  },
+  "previous_manifest": "terrain.json"
+}

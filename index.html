@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Bufz0ylsvH5VX0RelLTkdCzDLj+JPhHmKTdEC0GXlzs='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' blob:; font-src 'self'; media-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; worker-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Plan and scout a local Marswalk with measured Jezero terrain, archived NASA observations and historical atmospheric context.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#191d1b">
+  <title>Terrain.Surf · Jezero field explorer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='22' fill='%23dd8e60'/%3E%3Cpath d='m8 30 10-13 8 8 7-10 9 18' fill='none' stroke='%23191d1b' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="vendor/driver-1.3.6/driver.css">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head>
+<body>
+  <div id="viewport" aria-label="Interactive 3D Mars terrain"></div>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Terrain Surf home"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15"/><path d="m6 22 8-11 6 7 5-6 5 12"/></svg><span>TERRAIN<span class="brand-dot">.</span>SURF</span></a>
+    <div class="expedition"><span class="status-dot"></span> FIELD EXPLORER <span class="divider">/</span> <span id="field-location">JEZERO, MARS</span></div>
+    <div class="top-actions"><button id="mission-open" class="quiet" aria-pressed="false">Plan a Marswalk</button><button id="sources-open" class="quiet">Data & sources <span>↗</span></button><button id="help-open" class="quiet tutorial-entry" aria-label="Tutorial and driving controls"><span class="tutorial-label">Tutorial</span><span class="tutorial-icon" aria-hidden="true">?</span></button></div>
+  </header>
+
+  <section class="site-card panel" aria-label="Location">
+    <div class="eyebrow">01 <span>THE LANDING REGION</span></div>
+    <h1>A small step<br>across Jezero.</h1>
+    <p>Drive the surface. Find your place.</p>
+    <div class="site-meta"><span>512 × 512 m</span><span>HiRISE / USGS</span></div>
+    <label class="field-label" for="site-select">Measured field</label>
+    <select id="site-select" aria-label="Select measured Mars field"></select>
+  </section>
+
+  <section id="mission-panel" class="panel" hidden aria-label="Rover-assisted Marswalk">
+    <div class="route-heading"><span class="eyebrow">CREW SCIENCE / ROVER SCOUT</span><button id="mission-close" class="icon-button" aria-label="Close Marswalk">×</button></div>
+    <h2 id="mission-title">Read the rocks of Jezero</h2>
+    <div id="mission-next" class="mission-next" aria-label="Next mission action">
+      <span id="mission-next-step" class="eyebrow">NEXT STEP</span>
+      <strong id="mission-next-title"></strong>
+      <p id="mission-next-detail"></p>
+      <button id="mission-next-action" class="wide"></button>
+    </div>
+    <p id="mission-objective"></p>
+    <p class="fine">MRO / HiRISE terrain + Perseverance observations. Historical science context, sols 12 & 16 (2021).</p>
+    <p id="mission-coverage" class="fine" hidden>No qualified stops in this field.</p>
+    <button id="mission-load" class="wide" hidden>Load the landing field</button>
+    <button id="mission-begin" class="wide">Begin excursion here</button>
+    <p id="mission-status" role="status"></p>
+    <p id="mission-scout-report" class="fine"></p>
+    <div id="mission-stops" role="group" aria-label="Science stops"></div>
+    <div class="mission-selection"><h3 id="mission-selected"></h3><button id="mission-evidence" class="quiet">NASA observation ↗</button></div>
+    <p id="mission-task" class="fine"></p>
+    <div class="mission-actions"><button id="mission-plan" aria-describedby="mission-route-reason">Plan this stop</button><button id="mission-drive" aria-describedby="mission-route-reason">Scout this route</button></div>
+    <div class="prerequisite"><p id="mission-route-reason"></p><button id="mission-route-prerequisite" class="quiet" hidden></button></div>
+    <canvas id="mission-profile" width="600" height="180" hidden aria-label="Elevation profile for selected science route"></canvas>
+    <p id="mission-leg-stats" class="fine"></p>
+    <div id="mission-notebook">
+    <label for="mission-note">Field notebook <span id="mission-count"></span></label>
+    <textarea id="mission-note" rows="3" maxlength="1200" placeholder="Visible textures, questions and follow-up evidence…"></textarea>
+    <p id="mission-near" class="fine"></p>
+    <button id="mission-record" class="wide" aria-describedby="mission-near">Record observation</button>
+    <button id="mission-record-prerequisite" class="quiet" hidden></button>
+    </div>
+    <details id="mission-assumptions"><summary>Excursion plan & assumptions</summary>
+      <p id="mission-summary" class="fine">Declare a start to check both stops and the return leg.</p>
+      <label for="mission-grade">Maximum terrain slope · assumed</label><select id="mission-grade"><option value="5">5° · cautious</option><option value="10">10°</option><option value="15" selected>15°</option><option value="25">25° · steep</option></select>
+      <div class="mission-settings"><div><label for="mission-speed">Assumed travel speed</label><select id="mission-speed"><option value="0.25">0.25 m/s</option><option value="0.5" selected>0.5 m/s</option><option value="1">1 m/s</option></select></div><div><label for="mission-dwell">Time per science stop</label><select id="mission-dwell"><option value="5" selected>5 minutes</option><option value="10">10 minutes</option><option value="20">20 minutes</option></select></div></div>
+      <button id="mission-replan" class="wide">Recheck full excursion</button>
+      <p class="fine">Horizontal ground distances use the crop’s local Mars scale. Timings and limits are planning assumptions. Small rocks, soil traction, suit effort and radiation remain unmodeled.</p>
+    </details>
+    <button id="mission-conditions" class="wide">Review historical conditions · sol 16</button>
+    <p class="fine">Dated MEDA temperature and pressure from one reference station. Included in your exported brief; not a forecast or a route-wide weather measurement.</p>
+    <div class="mission-actions"><button id="mission-return" aria-describedby="mission-footer-help">Plan return to start</button><button id="mission-export" aria-describedby="mission-footer-help">Export mission brief ↓</button></div>
+    <p id="mission-footer-help" class="fine"></p>
+    <p class="fine">1 / 2: approximate rover observation stations. S: your start. Rings show a 4 m interaction area, not rock positions or scientific accuracy. Notes remain in this page until you export or reload.</p>
+  </section>
+
+  <nav class="camera-switch panel" aria-label="Camera views">
+    <button id="chase-mode" aria-pressed="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m3 13 3-5h8l3 5v3H3zM5 16v2m10-2v2M7 8V5h6v3"/></svg><span>Chase <kbd>1</kbd></span></button>
+    <button id="navcam-mode" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14v11H3zM7 6l1-3h4l1 3"/><circle cx="10" cy="11" r="3"/></svg><span>Rover camera <kbd>2</kbd></span></button>
+  </nav>
+
+  <section id="sensor-panel" class="sensor-panel panel" hidden aria-label="Virtual camera profile">
+    <div class="eyebrow">NAVCAM <span>VIRTUAL SENSOR VIEW</span></div>
+    <div class="sensor-spec">96° <small>horizontal field of view</small></div>
+    <label for="sensor-resolution">Live image resolution</label>
+    <select id="sensor-resolution"><option value="preview">1280 × 960 · preview</option><option value="native">5120 × 3840 · full sensor</option></select>
+    <label for="sensor-aim">Mast aim</label>
+    <select id="sensor-aim"><option value="traverse">Traverse · look ahead</option><option value="ground">Inspect ground · look down</option><option value="horizon">Level horizon</option></select>
+    <label class="exposure-label" for="sensor-exposure">Exposure <output id="exposure-value">1.05×</output></label>
+    <input id="sensor-exposure" type="range" min="0.6" max="1.6" step="0.05" value="1.05" aria-label="Virtual camera exposure">
+    <button id="capture-frame" class="wide">Capture 5120 × 3840 <span>↓</span></button>
+    <p class="fine">Perseverance-inspired optics on your concept rover. Drag to aim the mast.</p>
+  </section>
+
+  <div id="reticle" aria-hidden="true" hidden><i></i><i></i><i></i><i></i></div>
+  <div id="sensor-stamp" hidden><span>CAM 01 / NAVCAM</span><span id="sensor-pixels">1280 × 960</span></div>
+  <div class="heading-strip" aria-label="Heading"><span>W</span><span>NW</span><b id="heading-text">000° N</b><span>NE</span><span>E</span></div>
+
+  <section class="map-panel panel" aria-label="Synchronized overhead map">
+    <div class="map-heading"><div class="eyebrow">ORBITAL VIEW <span>LIVE POSITION</span></div><span class="status-dot"></span></div>
+    <div class="map-tabs" role="group" aria-label="Map layer"><button id="optical-map" aria-pressed="true">Optical</button><button id="slope-map" aria-pressed="false">Slope</button><button id="weather-map" aria-pressed="false" aria-controls="weather-map-legend">Weather</button><button id="map-zoom" aria-label="Change map zoom">2×</button></div>
+    <div class="map-wrap"><canvas id="map" width="560" height="560" aria-label="Click this north-up map to navigate the rover to a destination" aria-describedby="map-click-hint"></canvas><span class="north">N ↑</span><div class="map-scale"><span id="map-scale-text">50 m</span><i></i></div></div>
+    <div class="coordinate-row"><span id="latitude">18.44471° N</span><span id="longitude">77.45080° E</span></div>
+    <p id="map-caption">Your route, on real Mars imagery.</p>
+    <p id="map-click-hint">Click the map to drive there · Space stops</p>
+    <div id="weather-map-legend" hidden><p id="weather-map-reading"></p><p>W = historical MEDA station. Hatched area: weather unmeasured. A grey W marks a time gap. Point symbols show location, not a coverage radius.</p><button id="weather-map-details">Compare departure times →</button></div>
+    <button id="route-open" class="wide" aria-pressed="false">Route details & options</button>
+    <button id="conditions-open" class="wide">Historical conditions · sol 16</button>
+    <div class="regional-entry"><button id="dust-map" aria-pressed="false" aria-controls="dust-map-legend">Dust layer</button><button id="regional-open" aria-controls="regional-dialog">Regional weather →</button></div>
+    <div id="dust-map-legend" hidden><p id="dust-map-reading"></p><p>Full-field source-bin colour · 6° × 5° grid. Same regional value across this small map; hatching = missing dust estimate.</p></div>
+    <button id="surface-detail" class="quiet" aria-pressed="true">Granular shading: on</button>
+    <p class="detail-note">1 m source posts · grain shading illustrative</p>
+  </section>
+
+  <section id="route-panel" class="panel" hidden aria-label="Surface route planner">
+    <div class="route-heading"><span class="eyebrow">YOUR TRAVERSE</span><button id="route-close" class="icon-button" aria-label="Close route planner">×</button></div>
+    <h3 id="route-site">Jezero field</h3>
+    <p id="route-status" role="status">Click the orbital map to choose a destination.</p>
+    <div id="route-comparison-legend" hidden><span id="route-direct-key">┄ Red dashed: direct path rejected for slope</span><span id="route-proposed-key">━ Green solid: proposed terrain route</span><p id="route-comparison-text"></p></div>
+    <label class="route-auto-label"><input id="route-auto" type="checkbox" checked>Drive automatically on map click</label>
+    <label class="field-label" for="route-grade">Maximum terrain slope · planning assumption</label>
+    <select id="route-grade"><option value="5">5° · cautious</option><option value="10">10°</option><option value="15" selected>15°</option><option value="25">25° · steep</option></select>
+    <div id="route-results" hidden>
+      <canvas id="route-profile" width="600" height="180" aria-label="Elevation along the proposed route"></canvas>
+      <div id="route-stats" class="route-stats"></div>
+      <div class="route-actions"><button id="route-follow">Drive to destination</button><button id="route-clear">Clear route</button></div>
+      <p id="route-warning" class="fine"></p>
+    </div>
+    <p class="fine">Terrain-based route; rock clearance unverified. Routes use measured elevations, a 4 m search grid and 1 m slope samples. No individual boulder exclusion map is loaded. Soil traction remains unknown. Navigation uses kinematic movement.</p>
+    <details class="environment"><summary>Historical conditions & coverage</summary><p>Sol 16 MEDA pressure and local mast air temperature are available at a dated reference station. No spatial weather gradient or future forecast is inferred. Ionizing radiation is not loaded; Curiosity RAD is from Gale Crater.</p><button id="route-conditions" class="wide">Review observations and gaps</button><a href="https://atmos.nmsu.edu/data_and_services/atmospheres_data/PERSEVERANCE/meda.html" target="_blank" rel="noopener">MEDA archive ↗</a></details>
+  </section>
+
+  <section class="drive-panel panel" aria-label="Driving controls and telemetry">
+    <div class="drive-top"><div><div class="eyebrow">SURFACE TRAVERSE</div><span id="drive-status">Ready to explore</span></div><button id="reset-rover" class="quiet">Reset <kbd>R</kbd></button></div>
+    <div class="telemetry"><div class="speed"><strong id="speed">0.00</strong><span>m/s</span></div><div><small>DISTANCE</small><b id="distance">0.0 m</b></div><div><small>PITCH / ROLL</small><b id="attitude">0.0° / 0.0°</b></div><div><small>ELEVATION</small><b id="elevation">−2568.0 m</b></div></div>
+    <div class="drive-bottom"><span><kbd>W</kbd><kbd>S</kbd> drive <kbd>A</kbd><kbd>D</kbd> steer <kbd>Space</kbd> brake</span><button id="speed-mode" aria-pressed="false" title="Toggle faster exploration speed">Explore speed</button></div>
+  </section>
+
+  <div class="camera-hint"><span id="camera-hint">Drag to orbit · Scroll to zoom · C to switch camera</span></div>
+  <footer><span>NASA SPACE APPS 2026 <i>·</i> LOCAL PROOF OF CONCEPT</span><span>Measured terrain <i>·</i> Illustrative colour <i>·</i> Kinematic driving</span></footer>
+
+  <div id="touch-drive" aria-label="Touch driving controls"><button data-drive="forward" aria-label="Drive forward">↑</button><div><button data-drive="left" aria-label="Steer left">←</button><button data-drive="brake" aria-label="Brake">■</button><button data-drive="right" aria-label="Steer right">→</button></div><button data-drive="reverse" aria-label="Drive backward">↓</button></div>
+
+  <div id="loading" role="status"><div class="loading-card"><div class="eyebrow">TERRAIN.SURF / FIELD 01</div><h2>Finding our footing.</h2><p id="loading-text">Loading the measured Martian surface…</p><progress id="load-progress" max="100" value="10"></progress><small>Jezero Crater · 18.4447° N, 77.4508° E</small></div></div>
+  <div id="toast" role="status" hidden></div>
+
+  <dialog id="sources-dialog"><div class="dialog-header"><span class="eyebrow">THE GROUND BENEATH YOU</span><button data-close="sources-dialog" class="icon-button" aria-label="Close sources">×</button></div><h2>Real terrain.<br>A virtual field visit.</h2><p>This is a 512 m patch around Perseverance’s landing region in Jezero Crater. The 3D surface and the overhead map use the same registered Mars data.</p><div class="source-row"><span>01</span><div><h3>Elevation</h3><p>USGS Mars 2020 HiRISE DTM · 1 m projected source posts, converted to the local ground scale. Height is not exaggerated.</p><a href="https://astrogeology.usgs.gov/search/map/Mars/Mars2020/JEZ_hirise_soc_006_DTM_MOLAtopography_DeltaGeoid_1m_Eqc_latTs0_lon0_blend40" target="_blank" rel="noopener">Open the elevation product ↗</a></div></div><div class="source-row"><span>02</span><div><h3>Orbital imagery</h3><p>Registered 25 cm HiRISE single-band imagery. The ground colour, granular shading and lighting are illustrative. Orbital contrast is compressed for relighting; the map retains the original image. Slope is derived from elevation.</p><a href="https://astrogeology.usgs.gov/search/map/Mars/Mars2020/JEZ_hirise_soc_006_orthoMosaic_25cm_Eqc_latTs0_lon0_first" target="_blank" rel="noopener">Open the optical product ↗</a></div></div><div class="source-row"><span>03</span><div><h3>The rover’s eye</h3><p>Perseverance Navcam reference: 5120 × 3840 RGB sensor, 96° horizontal field. Live preview is 1280 × 960. This rectilinear view approximates the field; it does not simulate calibrated lens distortion or sensor noise.</p><a href="https://ntrs.nasa.gov/api/citations/20220013651/downloads/Guzewich.hexagonal.STI.pdf" target="_blank" rel="noopener">NASA-hosted camera reference · §2.1 ↗</a></div></div><p class="fine">Henri’s existing concept rover uses terrain-following kinematics. Soil response, wheel slip, force-based suspension and astronaut safety are not validated by this view. Frame size cannot recover rocks below the source data’s resolution.</p><div class="source-row"><span>04</span><div><h3>Perseverance science stops</h3><p>SuperCam observations of Máaz (sol 12) and Yeehgo (sol 16), joined by observation ID and rover site/drive to NASA PDS PLACES. Observation stations are approximate; residual registration against this terrain is not quantified. Source dates, original records and limitations remain visible.</p><a href="data/science_v006/science.json" target="_blank" rel="noopener">Inspect science records and source hashes ↗</a><br><a href="https://pds-geosciences.wustl.edu/missions/mars2020/places.htm" target="_blank" rel="noopener">NASA PDS localization archive ↗</a></div></div><div class="source-row"><span>05</span><div><h3>Why this mission</h3><p>The challenge asks for a localized, integrated Mars view that joins multiple NASA missions to help humans plan and conduct science. This prototype joins MRO terrain with Perseverance observations in a crew excursion workflow. Optical and topographic data are included; slope is derived. Historical MEDA pressure and local mast air temperature add atmospheric context. Ionizing radiation is not loaded.</p><a href="https://www.spaceappschallenge.org/2026/challenges/interplanetary-survival-guide-martian-map/?tab=details" target="_blank" rel="noopener">Read the challenge objectives ↗</a></div></div><a class="manifest-link" href="data/terrain_detail.json" target="_blank" rel="noopener">Inspect crop bounds, projection and file hashes ↗</a><p class="fine">Data: NASA/JPL/University of Arizona/USGS. No NASA endorsement.</p><p class="fine"><a href="guide.pdf" target="_blank" rel="noopener noreferrer">Project &amp; user guide ↗</a> · <a href="demo.html" target="_blank" rel="noopener noreferrer">30-second overview ↗</a> · <a href="SOURCES.md" target="_blank" rel="noopener noreferrer">All resource credits ↗</a> · <a href="AI_DISCLOSURE.md" target="_blank" rel="noopener noreferrer">AI-assisted code, processing &amp; documentation ↗</a></p></dialog>
+
+  <dialog id="conditions-dialog" aria-labelledby="conditions-title">
+    <div class="dialog-header"><span class="eyebrow">DATED ENVIRONMENTAL EVIDENCE</span><button data-close="conditions-dialog" class="icon-button" aria-label="Close historical conditions">×</button></div>
+    <h2 id="conditions-title">Historical conditions</h2><p id="conditions-date"></p>
+    <button id="conditions-regional" class="wide">View regional dust maps & history →</button>
+    <div id="conditions-selector"><label for="conditions-time">Observation time · <output id="conditions-time-label"></output></label>
+      <input id="conditions-time" type="range" min="0" max="55" step="1" value="48" aria-describedby="conditions-actual-time">
+      <div class="conditions-controls"><button id="conditions-prev">← Previous time</button><button id="conditions-next">Next time →</button></div>
+      <p id="conditions-actual-time" class="fine"></p></div>
+    <p id="conditions-status" role="status"></p>
+    <div id="conditions-values"><div><span>Pressure</span><strong id="conditions-pressure"></strong><small>Derived MEDA pressure</small></div><div><span>Mast air temperature · ATS1</span><strong id="conditions-temperature"></strong><small id="conditions-kelvin"></small></div></div>
+    <p class="fine">Temperature is local air near one mast unit, not a merged free-air estimate.</p>
+    <div id="conditions-context"><p id="conditions-location"></p><p id="conditions-route"></p><p id="conditions-epoch"></p><p id="conditions-coverage"></p></div>
+    <section id="conditions-excursion" aria-labelledby="conditions-plan-title">
+      <h3 id="conditions-plan-title">Compare historical departures</h3>
+      <p class="fine">Departure A uses the observation-time slider above. Choose a second departure B below. Both use the same planned excursion, travel speed and stop duration.</p>
+      <label for="conditions-compare">Departure B · sol 16</label><select id="conditions-compare"></select>
+      <p id="conditions-plan-hint" class="fine"></p><button id="conditions-plan-link">Open Marswalk planner →</button>
+      <div id="conditions-timeline-wrap" hidden>
+        <p id="conditions-primary-summary" class="fine"></p><p id="conditions-alternate-summary" class="fine"></p>
+        <div class="weather-table-scroll" tabindex="0" aria-label="Scroll excursion timing comparison"><table><caption>Estimated arrival and return · historical station context</caption><thead><tr><th scope="col">Event</th><th scope="col">Departure A</th><th scope="col">Departure B</th></tr></thead><tbody id="conditions-timeline"></tbody></table></div>
+        <p class="fine">Nearest retained 15-minute station slot, with exact source time and offset. Gaps stay missing. This does not measure weather at each stop or establish continuous coverage. Duration uses Earth seconds; LMST uses the longer Mars sol.</p>
+        <a href="https://www.giss.nasa.gov/tools/mars24/help/notes.html" target="_blank" rel="noopener">NASA Mars24 clock convention ↗</a>
+      </div>
+    </section>
+    <details id="conditions-provenance"><summary>Sources, quality and limits</summary><p id="conditions-quality"></p>
+      <p>Selected original rows are preserved. No interpolation across gaps, spatial weather model, forecast or ionizing-radiation dose is provided. Wind and humidity are excluded for this early sol.</p>
+      <a id="conditions-pressure-source" target="_blank" rel="noopener">Pressure CSV ↗</a> · <a id="conditions-temperature-source" target="_blank" rel="noopener">Temperature CSV ↗</a> · <a id="conditions-location-source" target="_blank" rel="noopener">Geometry CSV ↗</a><br>
+      <a href="data/weather_v009/weather.json" target="_blank" rel="noopener">Records, labels, processing and hashes ↗</a>
+    </details>
+    <p class="fine">Review this reference before scouting. Export mission brief includes your selected record, data gaps and distance/time separation.</p>
+  </dialog>
+  <dialog id="regional-dialog" aria-labelledby="regional-title">
+    <div class="dialog-header"><span class="eyebrow">HISTORICAL REGIONAL CONTEXT</span><button data-close="regional-dialog" class="icon-button" aria-label="Close regional weather">×</button></div>
+    <h2 id="regional-title">Dust across the region.</h2>
+    <p>Explore past dust patterns, then check coverage over every available terrain map. NASA MRO / MCS observations, gridded by Montabone and colleagues. This is atmospheric column dust, not surface dirt, wind or a forecast.</p>
+    <section id="regional-time"><label for="regional-date">Historical map date · representative UTC</label><select id="regional-date"></select><div class="regional-actions"><button id="regional-prev">← Previous</button><button id="regional-play" aria-pressed="false">Play history ▶</button><button id="regional-next">Next →</button></div><p id="regional-date-note" class="fine"></p></section>
+    <div class="regional-layout"><section>
+      <div class="regional-actions" id="regional-view"><button id="regional-wide" aria-pressed="false">Show whole Mars</button><button id="regional-home">Select active map’s bin</button></div>
+      <canvas id="regional-map" width="840" height="490" aria-label="Historical column dust grid"></canvas>
+      <div id="regional-legend"><span class="dust-ramp"></span><span>0 — 0.30+ column dust opacity · dimensionless · colour saturates at 0.30</span><span>▨ Missing estimate · no interpolation</span><span>□ Terrain-map locator (enlarged) · ○ Virtual scout</span></div>
+      <label for="regional-bin">Inspect a source bin · keyboard alternative to clicking the grid</label><select id="regional-bin"></select>
+      <p id="regional-scale" class="fine"></p>
+    </section><section id="regional-inspection">
+      <h3 id="regional-cell">Selected source bin</h3><strong id="regional-value"></strong><p class="fine">9.3 μm absorption column dust optical depth, normalized to 610 Pa.</p><p id="regional-cell-detail"></p>
+      <h3>History at this bin</h3><canvas id="regional-history" width="620" height="165" aria-label="Historical dust estimates in selected bin; missing data break the line"></canvas><p id="regional-change" class="fine"></p>
+    </section></div>
+    <section id="regional-coverage"><h3>Coverage over your available maps</h3><p class="fine">These are the complete terrain fields in this app’s catalog, independent of whether you have planned a route. A larger weather bin does not create more detailed local observations.</p><ul id="regional-fields"></ul><p id="regional-route"></p><button id="regional-plan">Open Marswalk planner →</button></section>
+    <details id="regional-provenance"><summary>Source, timing, uncertainty & limits</summary><p id="regional-credit"></p><p>Daily averages use weighted observation windows of 1–7 sols. The selected bin’s effective date can differ from the map’s representative UTC. Adjacent maps can share observations. A change is not a forecast, storm alert, radiation measurement, visibility estimate or astronaut exposure dose. MEDA station times remain independent.</p><p>Data: <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0 ↗</a>. Date subset / JSON conversion; original spatial bins, numerical values and gaps retained. Application license is separate.</p><a id="regional-source" target="_blank" rel="noopener">Producer & downloads ↗</a> · <a id="regional-method" target="_blank" rel="noopener">Methods paper ↗</a> · <a id="regional-nasa" target="_blank" rel="noopener">NASA MCS archive ↗</a><br><a href="data/regional_v011/regional.json" target="_blank" rel="noopener">Exact records, metadata, hashes & license ↗</a></details>
+  </dialog>
+  <dialog id="observation-dialog" aria-label="NASA science observation"><div class="dialog-header"><span class="eyebrow">ARCHIVED NASA OBSERVATION</span><button data-close="observation-dialog" class="icon-button" aria-label="Close observation">×</button></div><div id="observation-content"></div></dialog>
+  <dialog id="help-dialog"><div class="dialog-header"><span class="eyebrow">TAKE THE CONTROLS</span><button data-close="help-dialog" class="icon-button" aria-label="Close controls">×</button></div><h2>Your first traverse.</h2><div class="help-grid"><span><kbd>W</kbd> / <kbd>↑</kbd></span><p>Drive forward</p><span><kbd>S</kbd> / <kbd>↓</kbd></span><p>Drive backward</p><span><kbd>A</kbd><kbd>D</kbd></span><p>Steer left / right</p><span><kbd>Space</kbd></span><p>Brake independently of reverse</p><span><kbd>1</kbd> / <kbd>2</kbd></span><p>Chase / rover camera</p><span><kbd>C</kbd></span><p>Switch camera</p><span><kbd>R</kbd></span><p>Return to the start</p><span>Drag / scroll</span><p>Orbit / zoom in chase view; aim the mast in rover view</p></div><p class="fine">Plan a Marswalk to choose real science observations, check routes and record a virtual field notebook. Explore speed is not a Perseverance performance claim. Capture a 5120 × 3840 virtual image in rover camera mode. Click back on the terrain after using a menu to continue driving.</p><button id="help-done" class="wide">Let’s explore →</button></dialog>
+  <dialog id="tutorial-dialog" aria-labelledby="tutorial-title">
+    <div class="dialog-header"><span class="eyebrow">GETTING STARTED</span><button data-close="tutorial-dialog" class="icon-button" aria-label="Close tutorial menu">×</button></div>
+    <h2 id="tutorial-title">Your first Marswalk.</h2>
+    <p class="tutorial-intro">Learn by doing one science stop, then review the historical regional weather. The guide waits for your actions.</p>
+    <ol class="tutorial-outline"><li><b>Plan & scout</b><span>Mark your start, plan a science stop and send the rover.</span></li><li><b>Observe & record</b><span>Inspect NASA evidence and save a field note at arrival.</span></li><li><b>Review regional weather</b><span>Continue into the dust map, dates, coverage and sources.</span></li></ol>
+    <button id="tutorial-start" class="wide tutorial-primary">Guide my first stop →</button>
+    <button id="tutorial-interface" class="wide">Tour all app controls →</button>
+    <details class="tutorial-topics"><summary>Choose a tutorial topic</summary>
+      <div class="tutorial-topic-grid">
+        <button data-tutorial-chapter="map">Map & route options</button>
+        <button data-tutorial-chapter="regional">Regional weather</button>
+        <button data-tutorial-chapter="conditions">Historical conditions</button>
+        <button data-tutorial-chapter="drive">Driving, telemetry & cameras</button>
+        <button data-tutorial-chapter="mission">Marswalk planning & notebook</button>
+        <button data-tutorial-chapter="sources">Data, sources & help</button>
+      </div>
+    </details>
+    <button id="tutorial-controls" class="wide">Show driving & camera controls</button>
+    <button id="tutorial-explore" class="quiet wide">Explore freely</button>
+    <p class="fine">The full interface tour explains every panel and option. You can go Back, skip to a topic or exit at any time. The rover stays paused; your position and notes stay intact. Reopen this menu from Tutorial.</p>
+  </dialog>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

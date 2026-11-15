@@ -1,0 +1,20 @@
+# This repository deliberately includes a small selected browser-module closure
+# under node_modules/three. Do not replace this with a blanket dependency copy.
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.log
+*.jsonl
+*.bak
+*.bak-*
+*.blend
+*.blend1
+*.zip
+__pycache__/
+evidence/
+tooling/
+sessions/
+.DS_Store
+Thumbs.db

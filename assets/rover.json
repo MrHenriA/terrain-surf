@@ -1,0 +1,138 @@
+{
+  "source": "https://www.blendkit.com/asset-gallery-detail/1618d58f-edbc-4ce7-b339-0f23c39bd945/",
+  "source_sha256": "03d0bad28a00363c1623efe41483356b807aad97060b8a71686adb2ec3e206ad",
+  "blender": "5.2.0 LTS",
+  "axes": "metres, X right, Y up, -Z forward after glTF export",
+  "camera_mount_m": [
+    0.308,
+    1.6,
+    -0.7
+  ],
+  "limitations": [
+    "Concept rover reused; not a NASA flight vehicle model",
+    "Decimated visual geometry; browser kinematic controller, no UE physics export"
+  ],
+  "meshes": [
+    {
+      "node": "Rover_Chassis",
+      "source": "mars rover-Body",
+      "triangles_before": 3108106,
+      "triangles_after": 90000,
+      "uv_layers": 1
+    },
+    {
+      "node": "Wheel_FL",
+      "source": "mars rover-Wheel.FL",
+      "triangles_before": 167430,
+      "triangles_after": 5499,
+      "uv_layers": 1
+    },
+    {
+      "node": "Wheel_FR",
+      "source": "mars rover-Wheel.FR",
+      "triangles_before": 167430,
+      "triangles_after": 5500,
+      "uv_layers": 1
+    },
+    {
+      "node": "Wheel_BL",
+      "source": "mars rover-Wheel.BL",
+      "triangles_before": 167430,
+      "triangles_after": 5499,
+      "uv_layers": 1
+    },
+    {
+      "node": "Wheel_BR",
+      "source": "mars rover-Wheel.BR",
+      "triangles_before": 167430,
+      "triangles_after": 5500,
+      "uv_layers": 1
+    },
+    {
+      "node": "Rover_BellyLED_BL_v001",
+      "source": "BellyLED_BL_v001",
+      "triangles_before": 12,
+      "triangles_after": 12,
+      "uv_layers": 0
+    },
+    {
+      "node": "Rover_BellyLED_BR_v001",
+      "source": "BellyLED_BR_v001",
+      "triangles_before": 12,
+      "triangles_after": 12,
+      "uv_layers": 0
+    },
+    {
+      "node": "Rover_BellyLED_FL_v001",
+      "source": "BellyLED_FL_v001",
+      "triangles_before": 12,
+      "triangles_after": 12,
+      "uv_layers": 0
+    },
+    {
+      "node": "Rover_BellyLED_FR_v001",
+      "source": "BellyLED_FR_v001",
+      "triangles_before": 12,
+      "triangles_after": 12,
+      "uv_layers": 0
+    },
+    {
+      "node": "Rover_mars_rover-Widget",
+      "source": "mars rover-Widget",
+      "triangles_before": 2840,
+      "triangles_after": 1799,
+      "uv_layers": 1
+    }
+  ],
+  "wheels": {
+    "FL": {
+      "node": "Wheel_FL",
+      "center": [
+        -0.8349771499633789,
+        0.2994125485420227,
+        -0.8685901165008545
+      ],
+      "radius_m": 0.298710514936829
+    },
+    "FR": {
+      "node": "Wheel_FR",
+      "center": [
+        0.8112932443618774,
+        0.299411416053772,
+        -0.8685903549194336
+      ],
+      "radius_m": 0.2987011969089508
+    },
+    "BL": {
+      "node": "Wheel_BL",
+      "center": [
+        -0.835372805595398,
+        0.29941174387931824,
+        0.8674628734588623
+      ],
+      "radius_m": 0.29870452324394137
+    },
+    "BR": {
+      "node": "Wheel_BR",
+      "center": [
+        0.8117018342018127,
+        0.29941099882125854,
+        0.8674627542495728
+      ],
+      "radius_m": 0.29870819457573816
+    }
+  },
+  "glb": "assets/rover.glb",
+  "bytes": 11249344,
+  "sha256": "f163f85110d0936012cf46568636aa6a692c47ab9638746ebc1dcb2fecf0006a",
+  "source_unchanged": true,
+  "asset_credit": {
+    "title": "Mars Rover – Animated",
+    "author": "PKO Studio",
+    "provider": "BlenderKit",
+    "license": "Royalty Free",
+    "asset_base_id": "1618d58f-edbc-4ce7-b339-0f23c39bd945",
+    "asset_version_id": "d70f19eb-b66c-4a45-b47b-17fd2654a6ab",
+    "rights_basis": "Project owner confirmed acquisition and permission to use in this web project; see LICENSES.md"
+  }
+}

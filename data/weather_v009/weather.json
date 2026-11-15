@@ -1,0 +1,2709 @@
+{
+  "schema": 1,
+  "id": "meda-sol16-v009",
+  "mission": "Mars 2020 / Perseverance",
+  "instrument": "MEDA",
+  "sol": 16,
+  "date_label": "6–7 March 2021",
+  "source_utc_coverage": {
+    "start": "2021-03-06T14:58:06.998Z",
+    "end": "2021-03-07T15:37:14.698Z"
+  },
+  "selected_interval_lmst": {
+    "start": "16M00:00:00",
+    "end": "16M13:45:00"
+  },
+  "time_basis": "Selected records retain original SCLK, LMST and LTST. UTC range comes from PDS4 labels; no interpolated per-row UTC is asserted.",
+  "sampling": {
+    "slot_minutes": 15,
+    "maximum_offset_lmst_seconds": 60,
+    "cross_sensor_tolerance_sclk_seconds": 0.51,
+    "operation": "Nearest original observation; no averaging, gap filling, spatial interpolation or forecast. Later drive excluded; only sol16 00:00–13:45 LMST included."
+  },
+  "location": {
+    "basis": "Stationary MEDA ancillary interval, anchored by exact Yeehgo image SCLK to its PDS PLACES site 3 / drive 386 observation station.",
+    "position": {
+      "latitude": 18.445135052,
+      "longitude": 77.451034032
+    },
+    "anchor_sclk": 668362971.0,
+    "anchor_ancillary_row": {
+      "SCLK": "668362971",
+      "LMST": "00016M13:05:17.355",
+      "LTST": "0016 12:32:52",
+      "SOLAR_LONGITUDE_ANGLE": "147.16",
+      "SOLAR_ZENITHAL_ANGLE": "15.21",
+      "ROVER_POSITION_X": "30.07",
+      "ROVER_POSITION_Y": "-8.33",
+      "ROVER_POSITION_Z": "0.57",
+      "ROVER_VELOCITY": "0.00",
+      "ROVER_PITCH": "-1.70",
+      "ROVER_YAW": "88.56",
+      "ROVER_ROLL": "1.68",
+      "MASTHEAD_AZIMUTH": "",
+      "MASTHEAD_ELEVATION": "",
+      "line": 56890
+    },
+    "places_source": {
+      "id": "places",
+      "url": "https://pds-geosciences.wustl.edu/m2020/urn-nasa-pds-mars2020_rover_places/data_localizations/best_interp.csv",
+      "file": "terrain_places_best_interp.csv",
+      "bytes": 8684070,
+      "sha256": "58fbc62f2676195a00b40b2da53a797a70284a8d2344b288c999d325b7ccb4cc",
+      "retrieved_utc": "2026-11-14"
+    },
+    "places_record": {
+      "source": "places",
+      "csv_line": 73,
+      "record": {
+        "line": 73,
+        "frame": "ROVER",
+        "site": "3",
+        "drive": "386",
+        "pose": "-1",
+        "landing_x": "30.106",
+        "landing_y": "8.338",
+        "landing_z": "0.025",
+        "northing": "1093329.801",
+        "easting": "4354502.424",
+        "planetocentric_latitude": "18.445135052",
+        "planetodetic_latitude": "18.346169209",
+        "longitude": "77.451034032",
+        "elevation": "-2569.935",
+        "map_pixel_line": "14960.80",
+        "map_pixel_sample": "54449.70",
+        "dem_pixel_line": "3740.20",
+        "dem_pixel_sample": "13612.42",
+        "roll": "1.538",
+        "pitch": "-1.797",
+        "yaw": "88.389",
+        "quat_s": "0.716676476",
+        "quat_v1": "0.020550710",
+        "quat_v2": "-0.001887023",
+        "quat_v3": "0.697100377",
+        "areoid": "3394506.932",
+        "radius": "3391936.997",
+        "sclk": "668279724",
+        "sol": "15"
+      }
+    },
+    "next_station_sclk": "668365999",
+    "ancillary_position_spread_m": {
+      "ROVER_POSITION_X": 0.0,
+      "ROVER_POSITION_Y": 0.0,
+      "ROVER_POSITION_Z": 0.0
+    },
+    "registration": "Approximate observation station. Residual PLACES-to-DEM registration error is not quantified; no local coverage radius inferred."
+  },
+  "variables": {
+    "pressure_pa": "MEDA derived pressure, pascal",
+    "ats1_kelvin": "MEDA calibrated ATS1 local air temperature near the mast unit at 50 degrees; not a merged free-air temperature."
+  },
+  "quality": "Source archives plus format/unit/time checks. These chosen products supply no per-row quality flags. Missing/sentinel values remain unavailable.",
+  "limitations": [
+    "Historical reference point, not current weather, route-wide measurements or a forecast.",
+    "No spatial weather gradient inferred from one stationary observation location.",
+    "No wind or humidity: archive cautions exclude pre-sol36 wind and pre-sol63 humidity from science use.",
+    "No ionizing radiation or radiation dose layer; MEDA optical radiation is not ionizing dose.",
+    "Pressure uncertainty is empty here and its XML unit says kelvin; no uncertainty value/unit is inferred.",
+    "ATS1 measures local air near one instrument; rover thermal influence and independent scientific validation remain unresolved."
+  ],
+  "sources": {
+    "pressure": {
+      "url": "https://atmos.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0000_0089/sol_0016/WE__0016___________DER_PS__________________P02.CSV",
+      "file": "WE__0016___________DER_PS__________________P02.CSV",
+      "bytes": 2769231,
+      "sha256": "b21f56d2a433c66f0451e867b419360c58c82d61bc9bf963d04509b241afcaed",
+      "label": {
+        "url": "https://atmos.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0000_0089/sol_0016/WE__0016___________DER_PS__________________P02.xml",
+        "file": "WE__0016___________DER_PS__________________P02.xml",
+        "bytes": 9331,
+        "sha256": "f28e490c5ba50cd2d80fbe6ab7494dea3fb49a3cab866a0c0f08533ccda95344"
+      },
+      "lid": "urn:nasa:pds:mars2020_meda:data_derived_env:we__0016___________der_ps__________________p",
+      "version": "2.0",
+      "columns": [
+        {
+          "name": "SCLK",
+          "unit": "second",
+          "description": "Spacecraft Clock, as approximated by MEDA internal clock, at the time of the observation, without partition and including decimal thousandths of a second"
+        },
+        {
+          "name": "LMST",
+          "unit": null,
+          "description": "Local Mean Solar Time"
+        },
+        {
+          "name": "LTST",
+          "unit": null,
+          "description": "Local True Solar Time"
+        },
+        {
+          "name": "PRESSURE",
+          "unit": "pascal",
+          "description": "Pressure"
+        },
+        {
+          "name": "PRESSURE UNCERTAINTY",
+          "unit": "kelvin",
+          "description": "Pressure uncertainty"
+        },
+        {
+          "name": "TRANSDUCER",
+          "unit": null,
+          "description": "Transducer used: 1 / 2"
+        }
+      ],
+      "utc_start": "2021-03-06T14:58:44.998Z",
+      "utc_end": "2021-03-07T15:37:14.698Z",
+      "records": 51281,
+      "empty_or_sentinel_counts": {
+        "PRESSURE": 0,
+        "PRESSURE_UNCERTAINTY": 51281,
+        "TRANSDUCER": 0
+      },
+      "quality_flags": "No per-row quality flag columns in this product. Missing/nonfinite/sentinel values excluded; no new scientific quality grade assigned."
+    },
+    "temperature": {
+      "url": "https://atmos.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/data_calibrated_env/sol_0000_0089/sol_0016/WE__0016___________CAL_ATS_________________P01.CSV",
+      "file": "WE__0016___________CAL_ATS_________________P01.CSV",
+      "bytes": 8257935,
+      "sha256": "c57fdcb994f5c54cfa476cec648f48374670bb601e3a4ff4322ce031575e8551",
+      "label": {
+        "url": "https://atmos.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/data_calibrated_env/sol_0000_0089/sol_0016/WE__0016___________CAL_ATS_________________P01.xml",
+        "file": "WE__0016___________CAL_ATS_________________P01.xml",
+        "bytes": 9808,
+        "sha256": "8bf782a0e25fe1c2052f20352f59d48f3c5991414eb1360400101f75ee36fc86"
+      },
+      "lid": "urn:nasa:pds:mars2020_meda:data_calibrated_env:we__0016___________cal_ats_________________p",
+      "version": "1.0",
+      "columns": [
+        {
+          "name": "SCLK",
+          "unit": "second",
+          "description": "Spacecraft Clock, as approximated by MEDA internal clock, at the time of the observation, without partition and including decimal thousandths of a second"
+        },
+        {
+          "name": "LMST",
+          "unit": null,
+          "description": "Local Mean Solar Time"
+        },
+        {
+          "name": "LTST",
+          "unit": null,
+          "description": "Local True Solar Time"
+        },
+        {
+          "name": "ATS_LOCAL_TEMP1",
+          "unit": "kelvin",
+          "description": "Local air temperature near the unit mounted on the RSM at 50º"
+        },
+        {
+          "name": "ATS_LOCAL_TEMP2",
+          "unit": "kelvin",
+          "description": "Local air temperature near the unit mounted on the RSM at 155º"
+        },
+        {
+          "name": "ATS_LOCAL_TEMP3",
+          "unit": "kelvin",
+          "description": "Local air temperature near the unit mounted on the RSM at 290º"
+        },
+        {
+          "name": "ATS_LOCAL_TEMP4",
+          "unit": "kelvin",
+          "description": "Local air temperature near the unit mounted on the RFB at Port side/Pilot"
+        },
+        {
+          "name": "ATS_LOCAL_TEMP5",
+          "unit": "kelvin",
+          "description": "Local air temperature near the unit mounted on the RFB at Starboard/Co-pilot"
+        }
+      ],
+      "utc_start": "2021-03-06T14:58:40.998Z",
+      "utc_end": "2021-03-07T15:37:14.698Z",
+      "records": 103223,
+      "empty_or_sentinel_counts": {
+        "ATS_LOCAL_TEMP1": 0,
+        "ATS_LOCAL_TEMP2": 0,
+        "ATS_LOCAL_TEMP3": 0,
+        "ATS_LOCAL_TEMP4": 0,
+        "ATS_LOCAL_TEMP5": 0
+      },
+      "quality_flags": "No per-row quality flag columns in this product. Missing/nonfinite/sentinel values excluded; no new scientific quality grade assigned."
+    },
+    "geometry": {
+      "url": "https://atmos.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0000_0089/sol_0016/WE__0016___________DER_ANCILLARY___________P04.CSV",
+      "file": "WE__0016___________DER_ANCILLARY___________P04.CSV",
+      "bytes": 10297955,
+      "sha256": "e03ae66b5522960628607a0c9156f2e549a57fdb6e2a7b1ff2eabaf654224fa2",
+      "label": {
+        "url": "https://atmos.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/data_derived_env/sol_0000_0089/sol_0016/WE__0016___________DER_ANCILLARY___________P04.xml",
+        "file": "WE__0016___________DER_ANCILLARY___________P04.xml",
+        "bytes": 16416,
+        "sha256": "d806b7566d4170a6e04fdf072d5be8704e1c939592e853ebdb644ff1fb6a4f99"
+      },
+      "lid": "urn:nasa:pds:mars2020_meda:data_derived_env:we__0016___________der_ancillary___________p",
+      "version": "4.0",
+      "columns": [
+        {
+          "name": "SCLK",
+          "unit": "second",
+          "description": "Spacecraft Clock, as approximated by MEDA internal clock, at the time of the observation, without partition and including decimal thousandths of a second"
+        },
+        {
+          "name": "LMST",
+          "unit": null,
+          "description": "Local Mean Solar Time"
+        },
+        {
+          "name": "LTST",
+          "unit": null,
+          "description": "Local True Solar Time"
+        },
+        {
+          "name": "SOLAR_LONGITUDE_ANGLE",
+          "unit": "degree",
+          "description": "Solar azimuth angle relative to M2020 local level frame rotated 180 degrees over the X axis (+X points to the local north direction; +Z points up; +Y completes the right handed frame, pointing to the local west direction; the origin is located between the rover middle wheels and moves with the rover) It is the angle between the positive X-axis and the orthogonal projection of the Sun onto the XY plane. It increases in the counterclockwise sense about the positive Z-axis. Range of -180 to 180 degrees"
+        },
+        {
+          "name": "SOLAR_ZENITHAL_ANGLE",
+          "unit": "degree",
+          "description": "Solar elevation angle relative to M2020 local level frame rotated 180 degrees over the X axis (+X points to the local north direction; +Z points up; +Y completes the right handed frame, pointing to the local west direction; the origin is located between the rover middle wheels and moves with the rover) It is the angle between the direction of the Sun and the positive Z-axis. A value of 0 degrees represents Sun at frame zenith, while a value of 180 degrees represents Sun at frame nadir. Range of 0 to 180 degrees."
+        },
+        {
+          "name": "ROVER_POSITION_X",
+          "unit": "meter",
+          "description": "Rover position relative to landing site. It is the X-component of the rover position relative to landing site, expressed with respect to M2020_TOPO frame (+X is along the local north direction; +Z is along the outward normal at the landing site; +Y completes the right hand frame; the origin of this frame is located at the landing site)"
+        },
+        {
+          "name": "ROVER_POSITION_Y",
+          "unit": "meter",
+          "description": "Rover position relative to landing site. It is the y-component of the rover position relative to landing site, expressed with respect to M2020_TOPO frame (+X is along the local north direction; +Z is along the outward normal at the landing site; +Y completes the right hand frame; the origin of this frame is located at the landing site)"
+        },
+        {
+          "name": "ROVER_POSITION_Z",
+          "unit": "meter",
+          "description": "Rover position relative to landing site. It is the z-component of the rover position relative to landing site, expressed with respect to M2020_TOPO frame (+X is along the local north direction; +Z is along the outward normal at the landing site; +Y completes the right hand frame; the origin of this frame is located at the landing site)"
+        },
+        {
+          "name": "ROVER_VELOCITY",
+          "unit": "meter/hour",
+          "description": "Rover velocity"
+        },
+        {
+          "name": "ROVER_PITCH",
+          "unit": "degree",
+          "description": "Rover pitch, or counterclockwise rotation angle about the +Y-axis of the M2020_LOCAL_LEVEL frame. M2020_LOCAL_LEVEL frame is defined as follows: +X is along the local north direction; +Z is along the downward normal at the landing site; +Y completes the right hand frame; the origin of this frame is located between the rover middle wheels and moves with the rover"
+        },
+        {
+          "name": "ROVER_YAW",
+          "unit": "degree",
+          "description": "Rover yaw, or counterclockwise rotation angle about the +Z-axis of the M2020_LOCAL_LEVEL frame. M2020_LOCAL_LEVEL frame is defined as follows: +X is along the local north direction; +Z is along the downward normal at the landing site; +Y completes the right hand frame; the origin of this frame is located between the rover middle wheels and moves with the rover"
+        },
+        {
+          "name": "ROVER_ROLL",
+          "unit": "degree",
+          "description": "Rover roll, or counterclockwise rotation angle about the +X-axis of the M2020_LOCAL_LEVEL frame. M2020_LOCAL_LEVEL frame is defined as follows: +X is along the local north direction; +Z is along the downward normal at the landing site; +Y completes the right hand frame; the origin of this frame is located between the rover middle wheels and moves with the rover"
+        },
+        {
+          "name": "MASTHEAD_AZIMUTH",
+          "unit": "degree",
+          "description": "Masthead azimuth angle. Range of -180 to 180 degrees. An azimuth angle of 1 degree represents rover looking backward, an azimuth angle of 91 degrees represents rover looking to the left, an azimuth angle of -179 degrees represents rover looking forward, and an azimuth angle of -89 degrees represents rover looking to the right"
+        },
+        {
+          "name": "MASTHEAD_ELEVATION",
+          "unit": "degree",
+          "description": "Masthead elevation angle. Range of 0 to 360 degrees. An elevation angle of 1 degree represents rover looking down, an elevation angle of 91 degrees represents rover looking forward and an elevation angle of 181 degrees represents rover looking at the zenith"
+        }
+      ],
+      "utc_start": "2021-03-06T14:58:06.998Z",
+      "utc_end": "2021-03-07T15:37:14.698Z",
+      "records": 103410,
+      "empty_or_sentinel_counts": {
+        "SOLAR_LONGITUDE_ANGLE": 0,
+        "SOLAR_ZENITHAL_ANGLE": 0,
+        "ROVER_POSITION_X": 0,
+        "ROVER_POSITION_Y": 0,
+        "ROVER_POSITION_Z": 0,
+        "ROVER_VELOCITY": 0,
+        "ROVER_PITCH": 0,
+        "ROVER_YAW": 0,
+        "ROVER_ROLL": 0,
+        "MASTHEAD_AZIMUTH": 103410,
+        "MASTHEAD_ELEVATION": 103410
+      },
+      "quality_flags": "No per-row quality flag columns in this product. Missing/nonfinite/sentinel values excluded; no new scientific quality grade assigned."
+    },
+    "readme.txt": {
+      "url": "https://atmos.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/readme.txt",
+      "file": "readme.txt",
+      "sha256": "c32e17b081984383dde8ed132f877397e664d40762457588bcc11310053a0d80",
+      "bytes": 6621
+    },
+    "meda_env_rdr_sis.pdf": {
+      "url": "https://atmos.nmsu.edu/PDS/data/PDS4/Mars2020/mars2020_meda/document/meda_env_rdr_sis.pdf",
+      "file": "meda_env_rdr_sis.pdf",
+      "sha256": "5d1e4d71c33c4fc3888fab21324878e5d192a2058279ea3d034a6b48763d66fb",
+      "bytes": 1733894
+    },
+    "m2020_tp_ops210303_iau2000_v1.tf": {
+      "url": "https://naif.jpl.nasa.gov/pub/naif/MARS2020/kernels/fk/m2020_tp_ops210303_iau2000_v1.tf",
+      "file": "m2020_tp_ops210303_iau2000_v1.tf",
+      "sha256": "b9781c2340acef659d6c9965e8b1cfbacffd39af3d2201fb88b84423652f9d83",
+      "bytes": 3362
+    }
+  },
+  "slots": [
+    {
+      "requested_lmst": "16M00:00:00",
+      "minute": 0,
+      "status": "observed",
+      "sclk": 668314620.0,
+      "lmst": "00016M00:00:59.649",
+      "ltst": "0015 23:28:23",
+      "offset_from_requested_lmst_seconds": 59.649,
+      "pressure_pa": null,
+      "ats1_kelvin": 206.38,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": null,
+        "temperature": {
+          "SCLK": "668314620",
+          "LMST": "00016M00:00:59.649",
+          "LTST": "0015 23:28:23",
+          "ATS_LOCAL_TEMP1": "206.38",
+          "ATS_LOCAL_TEMP2": "211.03",
+          "ATS_LOCAL_TEMP3": "210.36",
+          "ATS_LOCAL_TEMP4": "208.88",
+          "ATS_LOCAL_TEMP5": "208.18",
+          "line": 2
+        },
+        "geometry": {
+          "SCLK": "668314620",
+          "LMST": "00016M00:00:59.649",
+          "LTST": "0015 23:28:23",
+          "SOLAR_LONGITUDE_ANGLE": "18.54",
+          "SOLAR_ZENITHAL_ANGLE": "154.52",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 24
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M00:15:00",
+      "minute": 15,
+      "status": "observed",
+      "sclk": 668315483.0,
+      "lmst": "00016M00:14:59.565",
+      "ltst": "0015 23:42:23",
+      "offset_from_requested_lmst_seconds": -0.43499999999994543,
+      "pressure_pa": 737.82,
+      "ats1_kelvin": 210.77,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668315483",
+          "LMST": "00016M00:14:59.565",
+          "LTST": "0015 23:42:23",
+          "PRESSURE": "737.82",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 861
+        },
+        "temperature": {
+          "SCLK": "668315483",
+          "LMST": "00016M00:14:59.565",
+          "LTST": "0015 23:42:23",
+          "ATS_LOCAL_TEMP1": "210.77",
+          "ATS_LOCAL_TEMP2": "210.42",
+          "ATS_LOCAL_TEMP3": "211.40",
+          "ATS_LOCAL_TEMP4": "207.93",
+          "ATS_LOCAL_TEMP5": "207.43",
+          "line": 1728
+        },
+        "geometry": {
+          "SCLK": "668315483",
+          "LMST": "00016M00:14:59.565",
+          "LTST": "0015 23:42:23",
+          "SOLAR_LONGITUDE_ANGLE": "10.55",
+          "SOLAR_ZENITHAL_ANGLE": "155.35",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 1750
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M00:30:00",
+      "minute": 30,
+      "status": "observed",
+      "sclk": 668316408.0,
+      "lmst": "00016M00:29:59.823",
+      "ltst": "0015 23:57:24",
+      "offset_from_requested_lmst_seconds": -0.17699999999990723,
+      "pressure_pa": 739.42,
+      "ats1_kelvin": 206.93,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668316408",
+          "LMST": "00016M00:29:59.823",
+          "LTST": "0015 23:57:24",
+          "PRESSURE": "739.42",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 1786
+        },
+        "temperature": {
+          "SCLK": "668316408",
+          "LMST": "00016M00:29:59.823",
+          "LTST": "0015 23:57:24",
+          "ATS_LOCAL_TEMP1": "206.93",
+          "ATS_LOCAL_TEMP2": "213.57",
+          "ATS_LOCAL_TEMP3": "213.00",
+          "ATS_LOCAL_TEMP4": "207.39",
+          "ATS_LOCAL_TEMP5": "207.35",
+          "line": 3578
+        },
+        "geometry": {
+          "SCLK": "668316408",
+          "LMST": "00016M00:29:59.823",
+          "LTST": "0015 23:57:24",
+          "SOLAR_LONGITUDE_ANGLE": "1.57",
+          "SOLAR_ZENITHAL_ANGLE": "155.73",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 3600
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M00:45:00",
+      "minute": 45,
+      "status": "observed",
+      "sclk": 668317333.0,
+      "lmst": "00016M00:45:00.081",
+      "ltst": "0016 00:12:24",
+      "offset_from_requested_lmst_seconds": 0.08100000000013097,
+      "pressure_pa": 740.77,
+      "ats1_kelvin": 207.8,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668317333",
+          "LMST": "00016M00:45:00.081",
+          "LTST": "0016 00:12:24",
+          "PRESSURE": "740.77",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 2711
+        },
+        "temperature": {
+          "SCLK": "668317333",
+          "LMST": "00016M00:45:00.081",
+          "LTST": "0016 00:12:24",
+          "ATS_LOCAL_TEMP1": "207.80",
+          "ATS_LOCAL_TEMP2": "210.86",
+          "ATS_LOCAL_TEMP3": "211.59",
+          "ATS_LOCAL_TEMP4": "207.30",
+          "ATS_LOCAL_TEMP5": "206.84",
+          "line": 5428
+        },
+        "geometry": {
+          "SCLK": "668317333",
+          "LMST": "00016M00:45:00.081",
+          "LTST": "0016 00:12:24",
+          "SOLAR_LONGITUDE_ANGLE": "-7.48",
+          "SOLAR_ZENITHAL_ANGLE": "155.54",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 5450
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M01:00:00",
+      "minute": 60,
+      "status": "observed",
+      "sclk": 668318258.0,
+      "lmst": "00016M01:00:00.339",
+      "ltst": "0016 00:27:25",
+      "offset_from_requested_lmst_seconds": 0.3389999999999418,
+      "pressure_pa": 741.24,
+      "ats1_kelvin": 208.79,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668318258",
+          "LMST": "00016M01:00:00.339",
+          "LTST": "0016 00:27:25",
+          "PRESSURE": "741.24",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "2",
+          "line": 3633
+        },
+        "temperature": {
+          "SCLK": "668318258",
+          "LMST": "00016M01:00:00.339",
+          "LTST": "0016 00:27:25",
+          "ATS_LOCAL_TEMP1": "208.79",
+          "ATS_LOCAL_TEMP2": "209.17",
+          "ATS_LOCAL_TEMP3": "209.21",
+          "ATS_LOCAL_TEMP4": "206.05",
+          "ATS_LOCAL_TEMP5": "205.74",
+          "line": 7278
+        },
+        "geometry": {
+          "SCLK": "668318258",
+          "LMST": "00016M01:00:00.339",
+          "LTST": "0016 00:27:25",
+          "SOLAR_LONGITUDE_ANGLE": "-16.20",
+          "SOLAR_ZENITHAL_ANGLE": "154.81",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 7300
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M01:15:00",
+      "minute": 75,
+      "status": "observed",
+      "sclk": 668319182.0,
+      "lmst": "00016M01:14:59.624",
+      "ltst": "0016 00:42:24",
+      "offset_from_requested_lmst_seconds": -0.3760000000002037,
+      "pressure_pa": 741.98,
+      "ats1_kelvin": 202.47,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668319182",
+          "LMST": "00016M01:14:59.624",
+          "LTST": "0016 00:42:24",
+          "PRESSURE": "741.98",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 4554
+        },
+        "temperature": {
+          "SCLK": "668319182",
+          "LMST": "00016M01:14:59.624",
+          "LTST": "0016 00:42:24",
+          "ATS_LOCAL_TEMP1": "202.47",
+          "ATS_LOCAL_TEMP2": "202.62",
+          "ATS_LOCAL_TEMP3": "202.21",
+          "ATS_LOCAL_TEMP4": "204.75",
+          "ATS_LOCAL_TEMP5": "204.20",
+          "line": 9126
+        },
+        "geometry": {
+          "SCLK": "668319182",
+          "LMST": "00016M01:14:59.624",
+          "LTST": "0016 00:42:24",
+          "SOLAR_LONGITUDE_ANGLE": "-24.29",
+          "SOLAR_ZENITHAL_ANGLE": "153.57",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 9148
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M01:30:00",
+      "minute": 90,
+      "status": "observed",
+      "sclk": 668320107.0,
+      "lmst": "00016M01:29:59.882",
+      "ltst": "0016 00:57:25",
+      "offset_from_requested_lmst_seconds": -0.1180000000003929,
+      "pressure_pa": 742.08,
+      "ats1_kelvin": 203.2,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668320107",
+          "LMST": "00016M01:29:59.882",
+          "LTST": "0016 00:57:25",
+          "PRESSURE": "742.08",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 5479
+        },
+        "temperature": {
+          "SCLK": "668320107",
+          "LMST": "00016M01:29:59.882",
+          "LTST": "0016 00:57:25",
+          "ATS_LOCAL_TEMP1": "203.20",
+          "ATS_LOCAL_TEMP2": "203.19",
+          "ATS_LOCAL_TEMP3": "200.77",
+          "ATS_LOCAL_TEMP4": "204.17",
+          "ATS_LOCAL_TEMP5": "203.38",
+          "line": 10976
+        },
+        "geometry": {
+          "SCLK": "668320107",
+          "LMST": "00016M01:29:59.882",
+          "LTST": "0016 00:57:25",
+          "SOLAR_LONGITUDE_ANGLE": "-31.59",
+          "SOLAR_ZENITHAL_ANGLE": "151.90",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 10998
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M01:45:00",
+      "minute": 105,
+      "status": "observed",
+      "sclk": 668321032.0,
+      "lmst": "00016M01:45:00.140",
+      "ltst": "0016 01:12:25",
+      "offset_from_requested_lmst_seconds": 0.14000000000032742,
+      "pressure_pa": 741.94,
+      "ats1_kelvin": 199.86,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668321032",
+          "LMST": "00016M01:45:00.140",
+          "LTST": "0016 01:12:25",
+          "PRESSURE": "741.94",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 6404
+        },
+        "temperature": {
+          "SCLK": "668321032",
+          "LMST": "00016M01:45:00.140",
+          "LTST": "0016 01:12:25",
+          "ATS_LOCAL_TEMP1": "199.86",
+          "ATS_LOCAL_TEMP2": "200.04",
+          "ATS_LOCAL_TEMP3": "200.61",
+          "ATS_LOCAL_TEMP4": "203.02",
+          "ATS_LOCAL_TEMP5": "202.90",
+          "line": 12826
+        },
+        "geometry": {
+          "SCLK": "668321032",
+          "LMST": "00016M01:45:00.140",
+          "LTST": "0016 01:12:25",
+          "SOLAR_LONGITUDE_ANGLE": "-38.03",
+          "SOLAR_ZENITHAL_ANGLE": "149.87",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 12848
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M02:00:00",
+      "minute": 120,
+      "status": "observed",
+      "sclk": 668321957.0,
+      "lmst": "00016M02:00:00.398",
+      "ltst": "0016 01:27:26",
+      "offset_from_requested_lmst_seconds": 0.39800000000013824,
+      "pressure_pa": 740.99,
+      "ats1_kelvin": 198.22,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668321957",
+          "LMST": "00016M02:00:00.398",
+          "LTST": "0016 01:27:26",
+          "PRESSURE": "740.99",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "2",
+          "line": 7326
+        },
+        "temperature": {
+          "SCLK": "668321957",
+          "LMST": "00016M02:00:00.398",
+          "LTST": "0016 01:27:26",
+          "ATS_LOCAL_TEMP1": "198.22",
+          "ATS_LOCAL_TEMP2": "201.00",
+          "ATS_LOCAL_TEMP3": "201.71",
+          "ATS_LOCAL_TEMP4": "202.94",
+          "ATS_LOCAL_TEMP5": "201.65",
+          "line": 14676
+        },
+        "geometry": {
+          "SCLK": "668321957",
+          "LMST": "00016M02:00:00.398",
+          "LTST": "0016 01:27:26",
+          "SOLAR_LONGITUDE_ANGLE": "-43.66",
+          "SOLAR_ZENITHAL_ANGLE": "147.54",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 14698
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M02:15:00",
+      "minute": 135,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M02:30:00",
+      "minute": 150,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M02:45:00",
+      "minute": 165,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M03:00:00",
+      "minute": 180,
+      "status": "observed",
+      "sclk": 668325658.0,
+      "lmst": "00016M03:00:02.404",
+      "ltst": "0016 02:27:29",
+      "offset_from_requested_lmst_seconds": 2.404000000000451,
+      "pressure_pa": 739.64,
+      "ats1_kelvin": 193.99,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668325658",
+          "LMST": "00016M03:00:02.404",
+          "LTST": "0016 02:27:29",
+          "PRESSURE": "739.64",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 7612
+        },
+        "temperature": {
+          "SCLK": "668325658",
+          "LMST": "00016M03:00:02.404",
+          "LTST": "0016 02:27:29",
+          "ATS_LOCAL_TEMP1": "193.99",
+          "ATS_LOCAL_TEMP2": "196.15",
+          "ATS_LOCAL_TEMP3": "196.14",
+          "ATS_LOCAL_TEMP4": "200.93",
+          "ATS_LOCAL_TEMP5": "198.54",
+          "line": 15280
+        },
+        "geometry": {
+          "SCLK": "668325658",
+          "LMST": "00016M03:00:02.404",
+          "LTST": "0016 02:27:29",
+          "SOLAR_LONGITUDE_ANGLE": "-59.79",
+          "SOLAR_ZENITHAL_ANGLE": "136.29",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 15303
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M03:15:00",
+      "minute": 195,
+      "status": "observed",
+      "sclk": 668326580.0,
+      "lmst": "00016M03:14:59.742",
+      "ltst": "0016 02:42:26",
+      "offset_from_requested_lmst_seconds": -0.2579999999998108,
+      "pressure_pa": 739.76,
+      "ats1_kelvin": 196.44,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668326580",
+          "LMST": "00016M03:14:59.742",
+          "LTST": "0016 02:42:26",
+          "PRESSURE": "739.76",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 8534
+        },
+        "temperature": {
+          "SCLK": "668326580",
+          "LMST": "00016M03:14:59.742",
+          "LTST": "0016 02:42:26",
+          "ATS_LOCAL_TEMP1": "196.44",
+          "ATS_LOCAL_TEMP2": "195.95",
+          "ATS_LOCAL_TEMP3": "196.85",
+          "ATS_LOCAL_TEMP4": "202.21",
+          "ATS_LOCAL_TEMP5": "198.28",
+          "line": 17124
+        },
+        "geometry": {
+          "SCLK": "668326580",
+          "LMST": "00016M03:14:59.742",
+          "LTST": "0016 02:42:26",
+          "SOLAR_LONGITUDE_ANGLE": "-62.67",
+          "SOLAR_ZENITHAL_ANGLE": "133.19",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 17147
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M03:30:00",
+      "minute": 210,
+      "status": "observed",
+      "sclk": 668327505.0,
+      "lmst": "00016M03:30:00.000",
+      "ltst": "0016 02:57:27",
+      "offset_from_requested_lmst_seconds": 0.0,
+      "pressure_pa": 740.39,
+      "ats1_kelvin": 192.7,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668327505",
+          "LMST": "00016M03:30:00.000",
+          "LTST": "0016 02:57:27",
+          "PRESSURE": "740.39",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 9459
+        },
+        "temperature": {
+          "SCLK": "668327505",
+          "LMST": "00016M03:30:00.000",
+          "LTST": "0016 02:57:27",
+          "ATS_LOCAL_TEMP1": "192.70",
+          "ATS_LOCAL_TEMP2": "194.92",
+          "ATS_LOCAL_TEMP3": "194.79",
+          "ATS_LOCAL_TEMP4": "200.36",
+          "ATS_LOCAL_TEMP5": "196.49",
+          "line": 18974
+        },
+        "geometry": {
+          "SCLK": "668327505",
+          "LMST": "00016M03:30:00.000",
+          "LTST": "0016 02:57:27",
+          "SOLAR_LONGITUDE_ANGLE": "-65.26",
+          "SOLAR_ZENITHAL_ANGLE": "129.99",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 18997
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M03:45:00",
+      "minute": 225,
+      "status": "observed",
+      "sclk": 668328430.0,
+      "lmst": "00016M03:45:00.258",
+      "ltst": "0016 03:12:27",
+      "offset_from_requested_lmst_seconds": 0.2579999999998108,
+      "pressure_pa": 739.95,
+      "ats1_kelvin": 195.07,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668328430",
+          "LMST": "00016M03:45:00.258",
+          "LTST": "0016 03:12:27",
+          "PRESSURE": "739.95",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 10384
+        },
+        "temperature": {
+          "SCLK": "668328430",
+          "LMST": "00016M03:45:00.258",
+          "LTST": "0016 03:12:27",
+          "ATS_LOCAL_TEMP1": "195.07",
+          "ATS_LOCAL_TEMP2": "195.89",
+          "ATS_LOCAL_TEMP3": "196.19",
+          "ATS_LOCAL_TEMP4": "199.88",
+          "ATS_LOCAL_TEMP5": "195.89",
+          "line": 20824
+        },
+        "geometry": {
+          "SCLK": "668328430",
+          "LMST": "00016M03:45:00.258",
+          "LTST": "0016 03:12:27",
+          "SOLAR_LONGITUDE_ANGLE": "-67.58",
+          "SOLAR_ZENITHAL_ANGLE": "126.73",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 20847
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M04:00:00",
+      "minute": 240,
+      "status": "observed",
+      "sclk": 668329354.0,
+      "lmst": "00016M03:59:59.543",
+      "ltst": "0016 03:27:27",
+      "offset_from_requested_lmst_seconds": -0.4570000000003347,
+      "pressure_pa": 740.21,
+      "ats1_kelvin": 191.27,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668329354",
+          "LMST": "00016M03:59:59.543",
+          "LTST": "0016 03:27:27",
+          "PRESSURE": "740.21",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "2",
+          "line": 11305
+        },
+        "temperature": {
+          "SCLK": "668329354",
+          "LMST": "00016M03:59:59.543",
+          "LTST": "0016 03:27:27",
+          "ATS_LOCAL_TEMP1": "191.27",
+          "ATS_LOCAL_TEMP2": "194.56",
+          "ATS_LOCAL_TEMP3": "193.46",
+          "ATS_LOCAL_TEMP4": "197.42",
+          "ATS_LOCAL_TEMP5": "196.72",
+          "line": 22672
+        },
+        "geometry": {
+          "SCLK": "668329354",
+          "LMST": "00016M03:59:59.543",
+          "LTST": "0016 03:27:27",
+          "SOLAR_LONGITUDE_ANGLE": "-69.69",
+          "SOLAR_ZENITHAL_ANGLE": "123.42",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 22695
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M04:15:00",
+      "minute": 255,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M04:30:00",
+      "minute": 270,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M04:45:00",
+      "minute": 285,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M05:00:00",
+      "minute": 300,
+      "status": "observed",
+      "sclk": 668333114.0,
+      "lmst": "00016M05:00:58.970",
+      "ltst": "0016 04:28:27",
+      "offset_from_requested_lmst_seconds": 58.970000000001164,
+      "pressure_pa": null,
+      "ats1_kelvin": 191.81,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": null,
+        "temperature": {
+          "SCLK": "668333114",
+          "LMST": "00016M05:00:58.970",
+          "LTST": "0016 04:28:27",
+          "ATS_LOCAL_TEMP1": "191.81",
+          "ATS_LOCAL_TEMP2": "192.57",
+          "ATS_LOCAL_TEMP3": "193.48",
+          "ATS_LOCAL_TEMP4": "197.56",
+          "ATS_LOCAL_TEMP5": "194.76",
+          "line": 23262
+        },
+        "geometry": {
+          "SCLK": "668333114",
+          "LMST": "00016M05:00:58.970",
+          "LTST": "0016 04:28:27",
+          "SOLAR_LONGITUDE_ANGLE": "-76.68",
+          "SOLAR_ZENITHAL_ANGLE": "109.58",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 23308
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M05:15:00",
+      "minute": 315,
+      "status": "observed",
+      "sclk": 668333978.0,
+      "lmst": "00016M05:14:59.860",
+      "ltst": "0016 04:42:28",
+      "offset_from_requested_lmst_seconds": -0.13999999999941792,
+      "pressure_pa": 741.07,
+      "ats1_kelvin": 191.15,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668333978",
+          "LMST": "00016M05:14:59.860",
+          "LTST": "0016 04:42:28",
+          "PRESSURE": "741.07",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 12447
+        },
+        "temperature": {
+          "SCLK": "668333978",
+          "LMST": "00016M05:14:59.860",
+          "LTST": "0016 04:42:28",
+          "ATS_LOCAL_TEMP1": "191.15",
+          "ATS_LOCAL_TEMP2": "193.08",
+          "ATS_LOCAL_TEMP3": "192.25",
+          "ATS_LOCAL_TEMP4": "195.55",
+          "ATS_LOCAL_TEMP5": "195.68",
+          "line": 24990
+        },
+        "geometry": {
+          "SCLK": "668333978",
+          "LMST": "00016M05:14:59.860",
+          "LTST": "0016 04:42:28",
+          "SOLAR_LONGITUDE_ANGLE": "-78.03",
+          "SOLAR_ZENITHAL_ANGLE": "106.34",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 25036
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M05:30:00",
+      "minute": 330,
+      "status": "observed",
+      "sclk": 668334903.0,
+      "lmst": "00016M05:30:00.118",
+      "ltst": "0016 04:57:28",
+      "offset_from_requested_lmst_seconds": 0.11799999999857391,
+      "pressure_pa": 740.83,
+      "ats1_kelvin": 190.47,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668334903",
+          "LMST": "00016M05:30:00.118",
+          "LTST": "0016 04:57:28",
+          "PRESSURE": "740.83",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 13372
+        },
+        "temperature": {
+          "SCLK": "668334903",
+          "LMST": "00016M05:30:00.118",
+          "LTST": "0016 04:57:28",
+          "ATS_LOCAL_TEMP1": "190.47",
+          "ATS_LOCAL_TEMP2": "192.17",
+          "ATS_LOCAL_TEMP3": "192.08",
+          "ATS_LOCAL_TEMP4": "196.37",
+          "ATS_LOCAL_TEMP5": "194.74",
+          "line": 26840
+        },
+        "geometry": {
+          "SCLK": "668334903",
+          "LMST": "00016M05:30:00.118",
+          "LTST": "0016 04:57:28",
+          "SOLAR_LONGITUDE_ANGLE": "-79.41",
+          "SOLAR_ZENITHAL_ANGLE": "102.86",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 26886
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M05:45:00",
+      "minute": 345,
+      "status": "observed",
+      "sclk": 668335828.0,
+      "lmst": "00016M05:45:00.376",
+      "ltst": "0016 05:12:29",
+      "offset_from_requested_lmst_seconds": 0.3760000000002037,
+      "pressure_pa": 740.53,
+      "ats1_kelvin": 190.32,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668335828",
+          "LMST": "00016M05:45:00.376",
+          "LTST": "0016 05:12:29",
+          "PRESSURE": "740.53",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 14297
+        },
+        "temperature": {
+          "SCLK": "668335828",
+          "LMST": "00016M05:45:00.376",
+          "LTST": "0016 05:12:29",
+          "ATS_LOCAL_TEMP1": "190.32",
+          "ATS_LOCAL_TEMP2": "193.97",
+          "ATS_LOCAL_TEMP3": "192.70",
+          "ATS_LOCAL_TEMP4": "195.14",
+          "ATS_LOCAL_TEMP5": "195.05",
+          "line": 28690
+        },
+        "geometry": {
+          "SCLK": "668335828",
+          "LMST": "00016M05:45:00.376",
+          "LTST": "0016 05:12:29",
+          "SOLAR_LONGITUDE_ANGLE": "-80.73",
+          "SOLAR_ZENITHAL_ANGLE": "99.35",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 28736
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M06:00:00",
+      "minute": 360,
+      "status": "observed",
+      "sclk": 668336752.0,
+      "lmst": "00016M05:59:59.661",
+      "ltst": "0016 05:27:28",
+      "offset_from_requested_lmst_seconds": -0.3389999999999418,
+      "pressure_pa": 740.36,
+      "ats1_kelvin": 192.67,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668336752",
+          "LMST": "00016M05:59:59.661",
+          "LTST": "0016 05:27:28",
+          "PRESSURE": "740.36",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "2",
+          "line": 15218
+        },
+        "temperature": {
+          "SCLK": "668336752",
+          "LMST": "00016M05:59:59.661",
+          "LTST": "0016 05:27:28",
+          "ATS_LOCAL_TEMP1": "192.67",
+          "ATS_LOCAL_TEMP2": "194.13",
+          "ATS_LOCAL_TEMP3": "194.37",
+          "ATS_LOCAL_TEMP4": "195.88",
+          "ATS_LOCAL_TEMP5": "194.79",
+          "line": 30538
+        },
+        "geometry": {
+          "SCLK": "668336752",
+          "LMST": "00016M05:59:59.661",
+          "LTST": "0016 05:27:28",
+          "SOLAR_LONGITUDE_ANGLE": "-82.00",
+          "SOLAR_ZENITHAL_ANGLE": "95.84",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 30584
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M06:15:00",
+      "minute": 375,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M06:30:00",
+      "minute": 390,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M06:45:00",
+      "minute": 405,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M07:00:00",
+      "minute": 420,
+      "status": "observed",
+      "sclk": 668340512.0,
+      "lmst": "00016M07:00:59.089",
+      "ltst": "0016 06:28:29",
+      "offset_from_requested_lmst_seconds": 59.08899999999994,
+      "pressure_pa": null,
+      "ats1_kelvin": 195.69,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": null,
+        "temperature": {
+          "SCLK": "668340512",
+          "LMST": "00016M07:00:59.089",
+          "LTST": "0016 06:28:29",
+          "ATS_LOCAL_TEMP1": "195.69",
+          "ATS_LOCAL_TEMP2": "195.02",
+          "ATS_LOCAL_TEMP3": "197.06",
+          "ATS_LOCAL_TEMP4": "202.03",
+          "ATS_LOCAL_TEMP5": "197.49",
+          "line": 31150
+        },
+        "geometry": {
+          "SCLK": "668340512",
+          "LMST": "00016M07:00:59.089",
+          "LTST": "0016 06:28:29",
+          "SOLAR_LONGITUDE_ANGLE": "-86.86",
+          "SOLAR_ZENITHAL_ANGLE": "81.46",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 31219
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M07:15:00",
+      "minute": 435,
+      "status": "observed",
+      "sclk": 668341376.0,
+      "lmst": "00016M07:14:59.978",
+      "ltst": "0016 06:42:30",
+      "offset_from_requested_lmst_seconds": -0.02200000000084401,
+      "pressure_pa": 744.94,
+      "ats1_kelvin": 196.69,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668341376",
+          "LMST": "00016M07:14:59.978",
+          "LTST": "0016 06:42:30",
+          "PRESSURE": "744.94",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 16354
+        },
+        "temperature": {
+          "SCLK": "668341376",
+          "LMST": "00016M07:14:59.978",
+          "LTST": "0016 06:42:30",
+          "ATS_LOCAL_TEMP1": "196.69",
+          "ATS_LOCAL_TEMP2": "196.17",
+          "ATS_LOCAL_TEMP3": "196.38",
+          "ATS_LOCAL_TEMP4": "205.08",
+          "ATS_LOCAL_TEMP5": "199.05",
+          "line": 32878
+        },
+        "geometry": {
+          "SCLK": "668341376",
+          "LMST": "00016M07:14:59.978",
+          "LTST": "0016 06:42:30",
+          "SOLAR_LONGITUDE_ANGLE": "-87.95",
+          "SOLAR_ZENITHAL_ANGLE": "78.14",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 32947
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M07:30:00",
+      "minute": 450,
+      "status": "observed",
+      "sclk": 668342301.0,
+      "lmst": "00016M07:30:00.236",
+      "ltst": "0016 06:57:30",
+      "offset_from_requested_lmst_seconds": 0.2360000000007858,
+      "pressure_pa": 746.37,
+      "ats1_kelvin": 199.07,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668342301",
+          "LMST": "00016M07:30:00.236",
+          "LTST": "0016 06:57:30",
+          "PRESSURE": "746.37",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 17279
+        },
+        "temperature": {
+          "SCLK": "668342301",
+          "LMST": "00016M07:30:00.236",
+          "LTST": "0016 06:57:30",
+          "ATS_LOCAL_TEMP1": "199.07",
+          "ATS_LOCAL_TEMP2": "197.39",
+          "ATS_LOCAL_TEMP3": "198.67",
+          "ATS_LOCAL_TEMP4": "208.74",
+          "ATS_LOCAL_TEMP5": "202.27",
+          "line": 34728
+        },
+        "geometry": {
+          "SCLK": "668342301",
+          "LMST": "00016M07:30:00.236",
+          "LTST": "0016 06:57:30",
+          "SOLAR_LONGITUDE_ANGLE": "-89.13",
+          "SOLAR_ZENITHAL_ANGLE": "74.59",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 34797
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M07:45:00",
+      "minute": 465,
+      "status": "observed",
+      "sclk": 668343225.0,
+      "lmst": "00016M07:44:59.521",
+      "ltst": "0016 07:12:30",
+      "offset_from_requested_lmst_seconds": -0.4789999999993597,
+      "pressure_pa": 747.69,
+      "ats1_kelvin": 199.63,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668343225",
+          "LMST": "00016M07:44:59.521",
+          "LTST": "0016 07:12:30",
+          "PRESSURE": "747.69",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 18203
+        },
+        "temperature": {
+          "SCLK": "668343225",
+          "LMST": "00016M07:44:59.521",
+          "LTST": "0016 07:12:30",
+          "ATS_LOCAL_TEMP1": "199.63",
+          "ATS_LOCAL_TEMP2": "201.18",
+          "ATS_LOCAL_TEMP3": "199.38",
+          "ATS_LOCAL_TEMP4": "210.03",
+          "ATS_LOCAL_TEMP5": "202.11",
+          "line": 36576
+        },
+        "geometry": {
+          "SCLK": "668343225",
+          "LMST": "00016M07:44:59.521",
+          "LTST": "0016 07:12:30",
+          "SOLAR_LONGITUDE_ANGLE": "-90.32",
+          "SOLAR_ZENITHAL_ANGLE": "71.04",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 36645
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M08:00:00",
+      "minute": 480,
+      "status": "observed",
+      "sclk": 668344150.0,
+      "lmst": "00016M07:59:59.779",
+      "ltst": "0016 07:27:30",
+      "offset_from_requested_lmst_seconds": -0.22100000000136788,
+      "pressure_pa": 749.07,
+      "ats1_kelvin": 205.9,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668344150",
+          "LMST": "00016M07:59:59.779",
+          "LTST": "0016 07:27:30",
+          "PRESSURE": "749.07",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "2",
+          "line": 19125
+        },
+        "temperature": {
+          "SCLK": "668344150",
+          "LMST": "00016M07:59:59.779",
+          "LTST": "0016 07:27:30",
+          "ATS_LOCAL_TEMP1": "205.90",
+          "ATS_LOCAL_TEMP2": "203.22",
+          "ATS_LOCAL_TEMP3": "203.81",
+          "ATS_LOCAL_TEMP4": "215.14",
+          "ATS_LOCAL_TEMP5": "208.64",
+          "line": 38426
+        },
+        "geometry": {
+          "SCLK": "668344150",
+          "LMST": "00016M07:59:59.779",
+          "LTST": "0016 07:27:30",
+          "SOLAR_LONGITUDE_ANGLE": "-91.54",
+          "SOLAR_ZENITHAL_ANGLE": "67.48",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 38495
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M08:15:00",
+      "minute": 495,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M08:30:00",
+      "minute": 510,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M08:45:00",
+      "minute": 525,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M09:00:00",
+      "minute": 540,
+      "status": "observed",
+      "sclk": 668347910.0,
+      "lmst": "00016M09:00:59.207",
+      "ltst": "0016 08:28:31",
+      "offset_from_requested_lmst_seconds": 59.206999999998516,
+      "pressure_pa": null,
+      "ats1_kelvin": 210.23,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": null,
+        "temperature": {
+          "SCLK": "668347910",
+          "LMST": "00016M09:00:59.207",
+          "LTST": "0016 08:28:31",
+          "ATS_LOCAL_TEMP1": "210.23",
+          "ATS_LOCAL_TEMP2": "207.81",
+          "ATS_LOCAL_TEMP3": "219.48",
+          "ATS_LOCAL_TEMP4": "231.13",
+          "ATS_LOCAL_TEMP5": "216.48",
+          "line": 39038
+        },
+        "geometry": {
+          "SCLK": "668347910",
+          "LMST": "00016M09:00:59.207",
+          "LTST": "0016 08:28:31",
+          "SOLAR_LONGITUDE_ANGLE": "-97.05",
+          "SOLAR_ZENITHAL_ANGLE": "53.07",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 39130
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M09:15:00",
+      "minute": 555,
+      "status": "observed",
+      "sclk": 668348774.0,
+      "lmst": "00016M09:15:00.096",
+      "ltst": "0016 08:42:32",
+      "offset_from_requested_lmst_seconds": 0.0959999999977299,
+      "pressure_pa": 749.43,
+      "ats1_kelvin": 220.03,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668348774",
+          "LMST": "00016M09:15:00.096",
+          "LTST": "0016 08:42:32",
+          "PRESSURE": "749.43",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 20261
+        },
+        "temperature": {
+          "SCLK": "668348774",
+          "LMST": "00016M09:15:00.096",
+          "LTST": "0016 08:42:32",
+          "ATS_LOCAL_TEMP1": "220.03",
+          "ATS_LOCAL_TEMP2": "214.46",
+          "ATS_LOCAL_TEMP3": "232.93",
+          "ATS_LOCAL_TEMP4": "233.45",
+          "ATS_LOCAL_TEMP5": "226.11",
+          "line": 40766
+        },
+        "geometry": {
+          "SCLK": "668348774",
+          "LMST": "00016M09:15:00.096",
+          "LTST": "0016 08:42:32",
+          "SOLAR_LONGITUDE_ANGLE": "-98.53",
+          "SOLAR_ZENITHAL_ANGLE": "49.78",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 40858
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M09:30:00",
+      "minute": 570,
+      "status": "observed",
+      "sclk": 668349699.0,
+      "lmst": "00016M09:30:00.354",
+      "ltst": "0016 08:57:32",
+      "offset_from_requested_lmst_seconds": 0.3539999999993597,
+      "pressure_pa": 746.49,
+      "ats1_kelvin": 219.26,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668349699",
+          "LMST": "00016M09:30:00.354",
+          "LTST": "0016 08:57:32",
+          "PRESSURE": "746.49",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 21186
+        },
+        "temperature": {
+          "SCLK": "668349699",
+          "LMST": "00016M09:30:00.354",
+          "LTST": "0016 08:57:32",
+          "ATS_LOCAL_TEMP1": "219.26",
+          "ATS_LOCAL_TEMP2": "215.47",
+          "ATS_LOCAL_TEMP3": "234.86",
+          "ATS_LOCAL_TEMP4": "235.98",
+          "ATS_LOCAL_TEMP5": "227.79",
+          "line": 42616
+        },
+        "geometry": {
+          "SCLK": "668349699",
+          "LMST": "00016M09:30:00.354",
+          "LTST": "0016 08:57:32",
+          "SOLAR_LONGITUDE_ANGLE": "-100.25",
+          "SOLAR_ZENITHAL_ANGLE": "46.27",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 42708
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M09:45:00",
+      "minute": 585,
+      "status": "observed",
+      "sclk": 668350623.0,
+      "lmst": "00016M09:44:59.639",
+      "ltst": "0016 09:12:32",
+      "offset_from_requested_lmst_seconds": -0.3609999999971478,
+      "pressure_pa": 743.32,
+      "ats1_kelvin": 219.09,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668350623",
+          "LMST": "00016M09:44:59.639",
+          "LTST": "0016 09:12:32",
+          "PRESSURE": "743.32",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 22110
+        },
+        "temperature": {
+          "SCLK": "668350623",
+          "LMST": "00016M09:44:59.639",
+          "LTST": "0016 09:12:32",
+          "ATS_LOCAL_TEMP1": "219.09",
+          "ATS_LOCAL_TEMP2": "217.30",
+          "ATS_LOCAL_TEMP3": "234.64",
+          "ATS_LOCAL_TEMP4": "237.23",
+          "ATS_LOCAL_TEMP5": "223.99",
+          "line": 44464
+        },
+        "geometry": {
+          "SCLK": "668350623",
+          "LMST": "00016M09:44:59.639",
+          "LTST": "0016 09:12:32",
+          "SOLAR_LONGITUDE_ANGLE": "-102.14",
+          "SOLAR_ZENITHAL_ANGLE": "42.79",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 44556
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M10:00:00",
+      "minute": 600,
+      "status": "observed",
+      "sclk": 668351548.0,
+      "lmst": "00016M09:59:59.897",
+      "ltst": "0016 09:27:32",
+      "offset_from_requested_lmst_seconds": -0.10300000000279397,
+      "pressure_pa": 740.37,
+      "ats1_kelvin": 220.92,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668351548",
+          "LMST": "00016M09:59:59.897",
+          "LTST": "0016 09:27:32",
+          "PRESSURE": "740.37",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "2",
+          "line": 23032
+        },
+        "temperature": {
+          "SCLK": "668351548",
+          "LMST": "00016M09:59:59.897",
+          "LTST": "0016 09:27:32",
+          "ATS_LOCAL_TEMP1": "220.92",
+          "ATS_LOCAL_TEMP2": "218.78",
+          "ATS_LOCAL_TEMP3": "237.43",
+          "ATS_LOCAL_TEMP4": "236.04",
+          "ATS_LOCAL_TEMP5": "233.72",
+          "line": 46314
+        },
+        "geometry": {
+          "SCLK": "668351548",
+          "LMST": "00016M09:59:59.897",
+          "LTST": "0016 09:27:32",
+          "SOLAR_LONGITUDE_ANGLE": "-104.27",
+          "SOLAR_ZENITHAL_ANGLE": "39.33",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 46406
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M10:15:00",
+      "minute": 615,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M10:30:00",
+      "minute": 630,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M10:45:00",
+      "minute": 645,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M11:00:00",
+      "minute": 660,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M11:15:00",
+      "minute": 675,
+      "status": "gap",
+      "sclk": null,
+      "lmst": null,
+      "ltst": null,
+      "offset_from_requested_lmst_seconds": null,
+      "pressure_pa": null,
+      "ats1_kelvin": null,
+      "position": null,
+      "source_rows": {
+        "pressure": null,
+        "temperature": null,
+        "geometry": null
+      }
+    },
+    {
+      "requested_lmst": "16M11:30:00",
+      "minute": 690,
+      "status": "observed",
+      "sclk": 668357156.0,
+      "lmst": "00016M11:30:57.894",
+      "ltst": "0016 10:58:32",
+      "offset_from_requested_lmst_seconds": 57.89400000000023,
+      "pressure_pa": null,
+      "ats1_kelvin": 228.03,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": null,
+        "temperature": {
+          "SCLK": "668357156",
+          "LMST": "00016M11:30:57.894",
+          "LTST": "0016 10:58:32",
+          "ATS_LOCAL_TEMP1": "228.03",
+          "ATS_LOCAL_TEMP2": "228.25",
+          "ATS_LOCAL_TEMP3": "232.86",
+          "ATS_LOCAL_TEMP4": "239.89",
+          "ATS_LOCAL_TEMP5": "238.44",
+          "line": 46930
+        },
+        "geometry": {
+          "SCLK": "668357156",
+          "LMST": "00016M11:30:57.894",
+          "LTST": "0016 10:58:32",
+          "SOLAR_LONGITUDE_ANGLE": "-128.87",
+          "SOLAR_ZENITHAL_ANGLE": "19.79",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 47045
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M11:45:00",
+      "minute": 705,
+      "status": "observed",
+      "sclk": 668358021.0,
+      "lmst": "00016M11:44:59.757",
+      "ltst": "0016 11:12:34",
+      "offset_from_requested_lmst_seconds": -0.2430000000022119,
+      "pressure_pa": 731.36,
+      "ats1_kelvin": 236.95,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668358021",
+          "LMST": "00016M11:44:59.757",
+          "LTST": "0016 11:12:34",
+          "PRESSURE": "731.36",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 24171
+        },
+        "temperature": {
+          "SCLK": "668358021",
+          "LMST": "00016M11:44:59.757",
+          "LTST": "0016 11:12:34",
+          "ATS_LOCAL_TEMP1": "236.95",
+          "ATS_LOCAL_TEMP2": "239.19",
+          "ATS_LOCAL_TEMP3": "236.40",
+          "ATS_LOCAL_TEMP4": "241.64",
+          "ATS_LOCAL_TEMP5": "248.44",
+          "line": 48660
+        },
+        "geometry": {
+          "SCLK": "668358021",
+          "LMST": "00016M11:44:59.757",
+          "LTST": "0016 11:12:34",
+          "SOLAR_LONGITUDE_ANGLE": "-136.71",
+          "SOLAR_ZENITHAL_ANGLE": "17.35",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 48775
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M12:00:00",
+      "minute": 720,
+      "status": "observed",
+      "sclk": 668358946.0,
+      "lmst": "00016M12:00:00.015",
+      "ltst": "0016 11:27:34",
+      "offset_from_requested_lmst_seconds": 0.014999999999417923,
+      "pressure_pa": 731.95,
+      "ats1_kelvin": 233.95,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668358946",
+          "LMST": "00016M12:00:00.015",
+          "LTST": "0016 11:27:34",
+          "PRESSURE": "731.95",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 25096
+        },
+        "temperature": {
+          "SCLK": "668358946",
+          "LMST": "00016M12:00:00.015",
+          "LTST": "0016 11:27:34",
+          "ATS_LOCAL_TEMP1": "233.95",
+          "ATS_LOCAL_TEMP2": "240.48",
+          "ATS_LOCAL_TEMP3": "233.72",
+          "ATS_LOCAL_TEMP4": "241.25",
+          "ATS_LOCAL_TEMP5": "244.19",
+          "line": 50510
+        },
+        "geometry": {
+          "SCLK": "668358946",
+          "LMST": "00016M12:00:00.015",
+          "LTST": "0016 11:27:34",
+          "SOLAR_LONGITUDE_ANGLE": "-147.55",
+          "SOLAR_ZENITHAL_ANGLE": "15.16",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 50625
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M12:15:00",
+      "minute": 735,
+      "status": "observed",
+      "sclk": 668359871.0,
+      "lmst": "00016M12:15:00.273",
+      "ltst": "0016 11:42:35",
+      "offset_from_requested_lmst_seconds": 0.27300000000104774,
+      "pressure_pa": 732.81,
+      "ats1_kelvin": 233.08,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668359871",
+          "LMST": "00016M12:15:00.273",
+          "LTST": "0016 11:42:35",
+          "PRESSURE": "732.81",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 26021
+        },
+        "temperature": {
+          "SCLK": "668359871",
+          "LMST": "00016M12:15:00.273",
+          "LTST": "0016 11:42:35",
+          "ATS_LOCAL_TEMP1": "233.08",
+          "ATS_LOCAL_TEMP2": "240.65",
+          "ATS_LOCAL_TEMP3": "232.29",
+          "ATS_LOCAL_TEMP4": "243.45",
+          "ATS_LOCAL_TEMP5": "239.25",
+          "line": 52360
+        },
+        "geometry": {
+          "SCLK": "668359871",
+          "LMST": "00016M12:15:00.273",
+          "LTST": "0016 11:42:35",
+          "SOLAR_LONGITUDE_ANGLE": "-161.28",
+          "SOLAR_ZENITHAL_ANGLE": "13.61",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 52475
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M12:30:00",
+      "minute": 750,
+      "status": "observed",
+      "sclk": 668360795.0,
+      "lmst": "00016M12:29:59.558",
+      "ltst": "0016 11:57:34",
+      "offset_from_requested_lmst_seconds": -0.44200000000273576,
+      "pressure_pa": 733.71,
+      "ats1_kelvin": 240.61,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668360795",
+          "LMST": "00016M12:29:59.558",
+          "LTST": "0016 11:57:34",
+          "PRESSURE": "733.71",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "2",
+          "line": 26942
+        },
+        "temperature": {
+          "SCLK": "668360795",
+          "LMST": "00016M12:29:59.558",
+          "LTST": "0016 11:57:34",
+          "ATS_LOCAL_TEMP1": "240.61",
+          "ATS_LOCAL_TEMP2": "241.15",
+          "ATS_LOCAL_TEMP3": "240.33",
+          "ATS_LOCAL_TEMP4": "246.61",
+          "ATS_LOCAL_TEMP5": "245.59",
+          "line": 54208
+        },
+        "geometry": {
+          "SCLK": "668360795",
+          "LMST": "00016M12:29:59.558",
+          "LTST": "0016 11:57:34",
+          "SOLAR_LONGITUDE_ANGLE": "-177.31",
+          "SOLAR_ZENITHAL_ANGLE": "12.94",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 54323
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M12:45:00",
+      "minute": 765,
+      "status": "observed",
+      "sclk": 668361720.0,
+      "lmst": "00016M12:44:59.816",
+      "ltst": "0016 12:12:35",
+      "offset_from_requested_lmst_seconds": -0.18400000000110595,
+      "pressure_pa": 734.08,
+      "ats1_kelvin": 241.17,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668361720",
+          "LMST": "00016M12:44:59.816",
+          "LTST": "0016 12:12:35",
+          "PRESSURE": "734.08",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "2",
+          "line": 27867
+        },
+        "temperature": {
+          "SCLK": "668361720",
+          "LMST": "00016M12:44:59.816",
+          "LTST": "0016 12:12:35",
+          "ATS_LOCAL_TEMP1": "241.17",
+          "ATS_LOCAL_TEMP2": "241.20",
+          "ATS_LOCAL_TEMP3": "243.15",
+          "ATS_LOCAL_TEMP4": "247.50",
+          "ATS_LOCAL_TEMP5": "245.40",
+          "line": 56058
+        },
+        "geometry": {
+          "SCLK": "668361720",
+          "LMST": "00016M12:44:59.816",
+          "LTST": "0016 12:12:35",
+          "SOLAR_LONGITUDE_ANGLE": "166.25",
+          "SOLAR_ZENITHAL_ANGLE": "13.29",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 56173
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M13:00:00",
+      "minute": 780,
+      "status": "observed",
+      "sclk": 668362706.0,
+      "lmst": "00016M13:00:59.443",
+      "ltst": "0016 12:28:34",
+      "offset_from_requested_lmst_seconds": 59.4429999999993,
+      "pressure_pa": null,
+      "ats1_kelvin": 233.36,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": null,
+        "temperature": {
+          "SCLK": "668362706",
+          "LMST": "00016M13:00:59.443",
+          "LTST": "0016 12:28:34",
+          "ATS_LOCAL_TEMP1": "233.36",
+          "ATS_LOCAL_TEMP2": "233.15",
+          "ATS_LOCAL_TEMP3": "242.48",
+          "ATS_LOCAL_TEMP4": "248.70",
+          "ATS_LOCAL_TEMP5": "237.73",
+          "line": 56222
+        },
+        "geometry": {
+          "SCLK": "668362706",
+          "LMST": "00016M13:00:59.443",
+          "LTST": "0016 12:28:34",
+          "SOLAR_LONGITUDE_ANGLE": "150.77",
+          "SOLAR_ZENITHAL_ANGLE": "14.68",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 56360
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M13:15:00",
+      "minute": 795,
+      "status": "observed",
+      "sclk": 668363570.0,
+      "lmst": "00016M13:15:00.332",
+      "ltst": "0016 12:42:36",
+      "offset_from_requested_lmst_seconds": 0.3320000000021537,
+      "pressure_pa": 733.84,
+      "ats1_kelvin": 241.29,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668363570",
+          "LMST": "00016M13:15:00.332",
+          "LTST": "0016 12:42:36",
+          "PRESSURE": "733.84",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 28779
+        },
+        "temperature": {
+          "SCLK": "668363570",
+          "LMST": "00016M13:15:00.332",
+          "LTST": "0016 12:42:36",
+          "ATS_LOCAL_TEMP1": "241.29",
+          "ATS_LOCAL_TEMP2": "250.61",
+          "ATS_LOCAL_TEMP3": "241.79",
+          "ATS_LOCAL_TEMP4": "245.49",
+          "ATS_LOCAL_TEMP5": "244.80",
+          "line": 57950
+        },
+        "geometry": {
+          "SCLK": "668363570",
+          "LMST": "00016M13:15:00.332",
+          "LTST": "0016 12:42:36",
+          "SOLAR_LONGITUDE_ANGLE": "139.87",
+          "SOLAR_ZENITHAL_ANGLE": "16.58",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 58088
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M13:30:00",
+      "minute": 810,
+      "status": "observed",
+      "sclk": 668364494.0,
+      "lmst": "00016M13:29:59.617",
+      "ltst": "0016 12:57:35",
+      "offset_from_requested_lmst_seconds": -0.3830000000016298,
+      "pressure_pa": 733.27,
+      "ats1_kelvin": 245.52,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668364494",
+          "LMST": "00016M13:29:59.617",
+          "LTST": "0016 12:57:35",
+          "PRESSURE": "733.27",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 29703
+        },
+        "temperature": {
+          "SCLK": "668364494",
+          "LMST": "00016M13:29:59.617",
+          "LTST": "0016 12:57:35",
+          "ATS_LOCAL_TEMP1": "245.52",
+          "ATS_LOCAL_TEMP2": "246.55",
+          "ATS_LOCAL_TEMP3": "245.93",
+          "ATS_LOCAL_TEMP4": "249.37",
+          "ATS_LOCAL_TEMP5": "250.91",
+          "line": 59798
+        },
+        "geometry": {
+          "SCLK": "668364494",
+          "LMST": "00016M13:29:59.617",
+          "LTST": "0016 12:57:35",
+          "SOLAR_LONGITUDE_ANGLE": "130.80",
+          "SOLAR_ZENITHAL_ANGLE": "19.08",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 59936
+        }
+      }
+    },
+    {
+      "requested_lmst": "16M13:45:00",
+      "minute": 825,
+      "status": "observed",
+      "sclk": 668365419.0,
+      "lmst": "00016M13:44:59.875",
+      "ltst": "0016 13:12:35",
+      "offset_from_requested_lmst_seconds": -0.125,
+      "pressure_pa": 732.3,
+      "ats1_kelvin": 245.41,
+      "position": {
+        "latitude": 18.445135052,
+        "longitude": 77.451034032
+      },
+      "source_rows": {
+        "pressure": {
+          "SCLK": "668365419",
+          "LMST": "00016M13:44:59.875",
+          "LTST": "0016 13:12:35",
+          "PRESSURE": "732.30",
+          "PRESSURE_UNCERTAINTY": "",
+          "TRANSDUCER": "1",
+          "line": 30628
+        },
+        "temperature": {
+          "SCLK": "668365419",
+          "LMST": "00016M13:44:59.875",
+          "LTST": "0016 13:12:35",
+          "ATS_LOCAL_TEMP1": "245.41",
+          "ATS_LOCAL_TEMP2": "250.43",
+          "ATS_LOCAL_TEMP3": "245.13",
+          "ATS_LOCAL_TEMP4": "248.48",
+          "ATS_LOCAL_TEMP5": "249.14",
+          "line": 61648
+        },
+        "geometry": {
+          "SCLK": "668365419",
+          "LMST": "00016M13:44:59.875",
+          "LTST": "0016 13:12:35",
+          "SOLAR_LONGITUDE_ANGLE": "123.83",
+          "SOLAR_ZENITHAL_ANGLE": "21.91",
+          "ROVER_POSITION_X": "30.07",
+          "ROVER_POSITION_Y": "-8.33",
+          "ROVER_POSITION_Z": "0.57",
+          "ROVER_VELOCITY": "0.00",
+          "ROVER_PITCH": "-1.70",
+          "ROVER_YAW": "88.56",
+          "ROVER_ROLL": "1.68",
+          "MASTHEAD_AZIMUTH": "",
+          "MASTHEAD_ELEVATION": "",
+          "line": 61786
+        }
+      }
+    }
+  ],
+  "counts": {
+    "observed": 39,
+    "gaps": 17
+  }
+}

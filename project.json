@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "name": "Terrain Surf",
+  "event": "NASA Space Apps Challenge 2026",
+  "challenge": "Interplanetary Survival Guide: Martian Map",
+  "challenge_url": "https://www.spaceappschallenge.org/2026/challenges/interplanetary-survival-guide-martian-map/",
+  "intended_domain": "terrain.surf",
+  "links": {"app": "index.html", "demo": "demo.html", "video": "demo.mp4", "guide": "guide.pdf", "sources": "SOURCES.md"},
+  "ai_assistance": {
+    "tool": "OpenAI Codex",
+    "human_direction": "Henri originated and directed the concept and reviewed the resulting workflows.",
+    "used_for": ["research", "data-processing code", "application code", "debugging", "browser verification", "documentation", "capture automation", "video editing"],
+    "scientific_values": "Credited source observations, not AI-generated measurements",
+    "media": "Actual application screen capture; time-compressed waits/travel; no generated narration or music",
+    "details": "AI_DISCLOSURE.md"
+  },
+  "motion": "Terrain-following kinematics; not calibrated force-based rover dynamics",
+  "data_licenses": "LICENSES.md",
+  "submission_status": "Public hosting and Team Owner submission require independent verification"
+}

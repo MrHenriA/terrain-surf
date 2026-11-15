@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "default": "jezero_landing",
+  "sites": [
+    {
+      "id": "jezero_landing",
+      "name": "Jezero \u00b7 Landing field",
+      "manifest": "data/terrain_detail.json"
+    },
+    {
+      "id": "jezero_north",
+      "name": "Jezero \u00b7 North field",
+      "manifest": "data/jezero_north/terrain.json"
+    }
+  ]
+}
